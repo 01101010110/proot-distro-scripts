@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# Unofficial Bash Strict Mode
+set -euo pipefail
+IFS=$'\n\t'
+
+finish() {
+  local ret=$?
+  if [ ${ret} -ne 0 ] && [ ${ret} -ne 130 ]; then
+    echo
+    echo "ERROR: An error occurred during setup."
+    echo "Please refer to the error message(s) above."
+  fi
+}
+
+trap finish EXIT
+
+clear
+
+echo "This script will install a desktop environment in Termux along with a Debian proot"
+read -r -p "Please enter a username for the proot installation: " username
+
+termux-setup-storage
+termux-change-repo
+
+pkg update -y -o Dpkg::Options::="--force-confold"
+pkg upgrade -y -o Dpkg::Options::="--force-confold"
+pkg uninstall dbus -y
+pkg install wget ncurses-utils dbus proot-distro pulseaudio mesa-utils -y
+
+# Create default directories
+mkdir -p ~/Desktop
+mkdir -p ~/Downloads
+
+setup_proot() {
+  proot-distro install debian
+  proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 apt update
+  proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 apt upgrade -y
+  proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 apt install sudo wget -y
+
+  proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 groupadd storage
+  proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 groupadd wheel
+  proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 useradd -m -g users -G wheel,audio,video,storage -s /bin/bash "$username"
+
+  chmod u+rw $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers
+  echo "$username ALL=(ALL) NOPASSWD:ALL" | tee -a $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers > /dev/null
+  chmod u-w $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers
+}
+
+setup_vnc() {
+  proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 apt install xfce4 xfce4-goodies tightvncserver dbus-x11 -y
+
+  cat > $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.vnc/xstartup << EOF
+#!/bin/sh
+xrdb \$HOME/.Xresources
+startxfce4 &
+EOF
+
+  chmod +x $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.vnc/xstartup
+}
+
+setup_xrdp() {
+  proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 apt install xfce4 xfce4-goodies xrdp dbus-x11 -y
+
+  echo "xfce4-session" > $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.xsession
+
+  sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/xrdp/startwm.sh
+  sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/xrdp/startwm.sh
+}
+
+setup_desktop_environment() {
+  echo "Which remote desktop service would you like to use? (VNC/xRDP)"
+  read -r remote_desktop_service
+
+  if [[ $remote_desktop_service == "VNC" || $remote_desktop_service == "vnc" ]]; then
+    setup_vnc
+    echo "VNC setup complete."
+  elif [[ $remote_desktop_service == "xRDP" || $remote_desktop_service == "xrdp" ]]; then
+    setup_xrdp
+    echo "xRDP setup complete."
+  else
+    echo "Invalid selection. Exiting setup."
+    exit 1
+  fi
+}
+
+create_debian_login_script() {
+  cat > $PREFIX/bin/debian << EOF
+#!/bin/bash
+proot-distro login debian --user $username
+EOF
+
+  chmod +x $PREFIX/bin/debian
+}
+
+setup_proot
+setup_desktop_environment
+create_debian_login_script
+
+echo "Setup complete. You can now enter the Debian environment by typing 'debian'."

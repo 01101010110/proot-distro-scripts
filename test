@@ -41,7 +41,6 @@ alias apt='sudo nala '
 timezone=$(getprop persist.sys.timezone)
 proot-distro login debian -- env DISPLAY=:1.0 rm /etc/localtime
 proot-distro login debian  -- env DISPLAY=:1.0 cp /usr/share/zoneinfo/$timezone /etc/localtime
-}
 
 #Create .bashrc
 cp $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/etc/skel/.bashrc $HOME/.bashrc

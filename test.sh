@@ -41,6 +41,9 @@ source .sound" >> .bashrc
 cp $HOME/../usr/share/applications/firefox.desktop $HOME/Desktop 
 chmod +x $HOME/Desktop/firefox.desktop
 
+# Kill open X11 processes
+kill -9 $(pgrep -f "termux.x11") 2>/dev/null
+
 # Setup x11 app
 wget https://github.com/01101010110/proot-distro-scripts/raw/main/termux-x11.deb
 dpkg -i --force-depends termux-x11.deb

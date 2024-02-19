@@ -4,6 +4,7 @@
 read -r -p "Select a username: " username </dev/tty
 
 termux-setup-storage
+termux-change-repo
 
 # Update and install required packages
 yes | pkg install x11-repo

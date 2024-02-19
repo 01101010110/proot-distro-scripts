@@ -63,8 +63,8 @@ cp $HOME/../usr/share/applications/firefox.desktop $HOME/Desktop
 chmod +x $HOME/Desktop/firefox.desktop
 
 # Setup x11 app
-wget https://github.com//01101010110/proot-distro-scripts/termux-x11-nightly-1.03.00-0-all.deb
-wget https://github.com//01101010110/proot-distro-scripts/app-universal-debug.apk
+wget https://github.com/01101010110/proot-distro-scripts/raw/main/termux-x11-nightly-1.03.00-0-all.deb
+wget https://github.com/01101010110/proot-distro-scripts/raw/main/app-universal-debug.apk
 dpkg -i --force-depends termux-x11-nightly-1.03.00-0-all.deb
 pm install app-universal-debug.apk
 echo "allow-external-apps = true" >> ~/.termux/termux.properties

@@ -1,7 +1,4 @@
-
 #!/bin/bash
-
-#this is no where near ready yet. :)
 
 # Set Username
 read -r -p "Select a username: " username </dev/tty

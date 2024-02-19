@@ -10,7 +10,8 @@ termux-change-repo
 yes | pkg install x11-repo
 yes | pkg update
 yes | pkg uninstall dbus
-yes | pkg install wget dbus proot-distro pulseaudio virglrenderer-android pavucontrol-qt firefox xwayland
+yes | pkg install wget dbus proot-distro pulseaudio virglrenderer-android
+yes | pkg install pavucontrol-qt firefox xwayland
 yes | proot-distro install debian
 
 # Setup proot

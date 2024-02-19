@@ -36,11 +36,6 @@ alias virgl='GALLIUM_DRIVER=virpipe '
 alias apt='sudo nala '
 " >> $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
 
-# Set proot timezone
-timezone=$(getprop persist.sys.timezone)
-proot-distro login debian -- env DISPLAY=:1 rm /etc/localtime
-proot-distro login debian -- env DISPLAY=:1 cp /usr/share/zoneinfo/$timezone /etc/localtime
-
 # Create .bashrc
 cp $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/etc/skel/.bashrc $HOME/.bashrc
 
@@ -91,4 +86,5 @@ echo 'start_debian_x11() {
 }' >> $HOME/.bashrc
 
 # Apply changes
-source $HOME/.bashrc
+source ~/.bashrc
+

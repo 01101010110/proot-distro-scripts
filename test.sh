@@ -30,12 +30,6 @@ chmod u-w $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers
 # Set proot DISPLAY
 echo "export DISPLAY=:1" >> $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
 
-# Set Termux aliases
-echo "
-alias debian='termux-x11 :1 && proot-distro login debian --shared-tmp && export DISPLAY=:1'
-alias apt='pkg upgrade -y && nala \$@'
-" >> $HOME/.bashrc
-
 # Set proot aliases
 echo "
 alias virgl='GALLIUM_DRIVER=virpipe '
@@ -44,6 +38,12 @@ alias apt='sudo nala '
 
 # Create .bashrc
 cp $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/etc/skel/.bashrc $HOME/.bashrc
+
+# Set Termux aliases
+echo "
+alias debian='termux-x11 :1 && proot-distro login debian --shared-tmp && export DISPLAY=:1'
+alias apt='pkg upgrade -y && nala \$@'
+" >> $HOME/.bashrc
 
 # Enable Sound
 echo "

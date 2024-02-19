@@ -54,12 +54,6 @@ pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymou
 echo "
 source .sound" >> .bashrc
 
-# Set aliases
-echo "
-alias debian='start_debian_x11'
-alias apt='pkg upgrade -y && nala $@'
-" >> $HOME/.bashrc
-
 # Put Firefox icon on Desktop
 cp $HOME/../usr/share/applications/firefox.desktop $HOME/Desktop 
 chmod +x $HOME/Desktop/firefox.desktop

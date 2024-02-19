@@ -43,7 +43,7 @@ chmod +x $HOME/Desktop/firefox.desktop
 
 # Setup x11 app
 wget https://github.com/01101010110/proot-distro-scripts/raw/main/termux-x11.deb
-dpkg -i termux-x11.deb
+dpkg -i --force-depends termux-x11.deb
 echo "allow-external-apps = true" >> ~/.termux/termux.properties
 termux-x11 :1
 proot-distro login debian --shared-tmp 

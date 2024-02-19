@@ -13,13 +13,13 @@ yes | pkg install wget dbus proot-distro pulseaudio git virglrenderer-android xf
 yes | proot-distro install debian
 
 # Setup proot
-proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 apt update
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 apt upgrade
 
 #Create user
-proot-distro login debian -- env DISPLAY=:1.0 groupadd storage
-proot-distro login debian -- env DISPLAY=:1.0 groupadd wheel
-proot-distro login debian -- env DISPLAY=:1.0 useradd -m -g users -G wheel,audio,video,storage -s /bin/bash "$username"
+proot-distro login debian -- env DISPLAY=:1 groupadd storage
+proot-distro login debian -- env DISPLAY=:1 groupadd wheel
+proot-distro login debian -- env DISPLAY=:1 useradd -m -g users -G wheel,audio,video,storage -s /bin/bash "$username"
 
 #Add user to sudoers
 chmod u+rw $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers
@@ -27,7 +27,7 @@ echo "$username ALL=(ALL) NOPASSWD:ALL" | tee -a $HOME/../usr/var/lib/proot-dist
 chmod u-w  $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers
 
 #Set proot DISPLAY
-echo "export DISPLAY=:1.0" >> $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
+echo "export DISPLAY=:1" >> $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
 
 #Set proot aliases
 echo "
@@ -37,8 +37,8 @@ alias apt='sudo nala '
 
 #Set proot timezone
 timezone=$(getprop persist.sys.timezone)
-proot-distro login debian -- env DISPLAY=:1.0 rm /etc/localtime
-proot-distro login debian  -- env DISPLAY=:1.0 cp /usr/share/zoneinfo/$timezone /etc/localtime
+proot-distro login debian -- env DISPLAY=:1 rm /etc/localtime
+proot-distro login debian  -- env DISPLAY=:1 cp /usr/share/zoneinfo/$timezone /etc/localtime
 
 #Create .bashrc
 cp $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/etc/skel/.bashrc $HOME/.bashrc
@@ -68,4 +68,4 @@ dpkg -i --force-depends termux-x11-nightly-1.03.00-0-all.deb
 echo "allow-external-apps = true" >> ~/.termux/termux.properties
 termux-x11 :1.0
 proot-distro login debian --shared-tmp 
-DISPLAY=:1.0 xfce4-session
+DISPLAY=:1 xfce4-session

@@ -30,6 +30,23 @@ chmod u-w $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers
 # Set proot DISPLAY
 echo "export DISPLAY=:1" >> $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
 
+# Define start_debian_x11 function
+start_debian_x11() {
+    MESA_NO_ERROR=1 MESA_GL_VERSION_OVERRIDE=4.3COMPAT MESA_GLES_VERSION_OVERRIDE=3.2 virgl_test_server_android --angle-gl &> /dev/null 2>&1
+    sleep 1
+    XDG_RUNTIME_DIR=${TMPDIR} termux-x11 :1 &
+    sleep 1
+    am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
+    sleep 1
+    proot-distro login debian --user $username --shared-tmp -- env DISPLAY=:1.0 dbus-launch --exit-with-session xfce4-session &> /dev/null 2>&1
+}
+
+# Set Termux aliases
+echo "
+alias debian='start_debian_x11'
+alias apt='pkg upgrade -y && nala \$@'
+" >> $HOME/.bashrc
+
 # Set proot aliases
 echo "
 alias virgl='GALLIUM_DRIVER=virpipe '
@@ -62,17 +79,6 @@ chmod +x $HOME/Desktop/firefox.desktop
 wget https://github.com/01101010110/proot-distro-scripts/raw/main/termux-x11.deb
 dpkg -i termux-x11.deb
 echo "allow-external-apps = true" >> ~/.termux/termux.properties
-
-
-echo 'start_debian_x11() {
-    MESA_NO_ERROR=1 MESA_GL_VERSION_OVERRIDE=4.3COMPAT MESA_GLES_VERSION_OVERRIDE=3.2 virgl_test_server_android --angle-gl &> /dev/null 2>&1
-    sleep 1
-    XDG_RUNTIME_DIR=${TMPDIR} termux-x11 :1 &
-    sleep 1
-    am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
-    sleep 1
-    proot-distro login debian --user $username --shared-tmp -- env DISPLAY=:1.0 dbus-launch --exit-with-session xfce4-session &> /dev/null 2>&1
-}' >> $HOME/.bashrc
 
 # Apply changes
 source ~/.bashrc

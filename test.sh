@@ -45,9 +45,8 @@ chmod +x $HOME/Desktop/firefox.desktop
 kill -9 $(pgrep -f "termux.x11") 2>/dev/null
 
 # Setup x11 app
-wget https://github.com/01101010110/proot-distro-scripts/raw/main/termux-x11.deb
-dpkg -i --force-depends termux-x11.deb
 echo "allow-external-apps = true" >> ~/.termux/termux.properties
+pkg install termux-x11-nightly
 
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 export DISPLAY=:1 && xfce4-session
 termux-x11 :1

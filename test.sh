@@ -31,7 +31,8 @@ yes | proot-distro install ubuntu
 # Setup proot
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt upgrade
-yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install sudo xrdp
+yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install sudo
+yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sudo apt install xrdp
 
 # Create user
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 groupadd storage

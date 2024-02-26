@@ -38,9 +38,6 @@ pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymou
 echo "
 source .sound" >> .bashrc
 
-# Kill open X11 processes
-kill -9 $(pgrep -f "termux.x11") 2>/dev/null
-
 # Setup termux to allow x11 app
 echo "allow-external-apps = true" >> ~/.termux/termux.properties
 

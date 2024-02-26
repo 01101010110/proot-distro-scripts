@@ -63,10 +63,5 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > 
 
 # Stop xRDP service
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp stop
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp start
 
-# Modify the xRDP start script
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
-
-service xrdp stop
-service xrdp start

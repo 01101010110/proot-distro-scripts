@@ -41,8 +41,10 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 useradd -m -g users -G 
 # Set user password
 echo "$username:$password" | proot-distro login ubuntu --shared-tmp -- chpasswd
 
-# Add user to sudoers file
-echo "$username ALL=(ALL) ALL" | EDITOR='tee -a' visudo
+# Add user to sudoers
+chmod u+rw $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers
+echo "$username ALL=(ALL) ALL" | tee -a $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers > /dev/null
+chmod u-w $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers
 
 # Enable Sound
 echo "

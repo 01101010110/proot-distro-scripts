@@ -1,22 +1,11 @@
 #!/bin/bash
 
-# Set non-interactive frontend
-export DEBIAN_FRONTEND=noninteractive
-
 # Set Username
 read -r -p "Select a username: " username </dev/tty
 
 # Set Password
 read -r -s -p "Enter password for $username: " password </dev/tty
 echo # move to a new line
-
-# Set timezone
-echo "Please enter your geographical area (e.g., Europe, America, Asia):"
-read AREA
-echo "Please enter your city or closest major city (e.g., Berlin, New_York, Tokyo):"
-read CITY
-echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
-echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
 
 termux-change-repo
 

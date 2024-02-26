@@ -58,5 +58,15 @@ source .sound" >> .bashrc
 # Enable PulseAudio over Network
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 
-# Login in to Environment
-proot-distro login ubuntu --shared-tmp -- /bin/bash -c  "export PULSE_SERVER=127.0.0.1 && su - $username -c \"env DISPLAY=:0 startxfce4\""
+# Configure xRDP
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > /home/$USERNAME/.xsession
+
+# Stop xRDP service
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp stop
+
+# Modify the xRDP start script
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
+
+service xrdp stop
+service xrdp start

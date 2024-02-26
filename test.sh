@@ -1,3 +1,4 @@
+termux-change-repo
 termux-setup-storage
 yes | pkg install x11-repo
 yes | pkg update

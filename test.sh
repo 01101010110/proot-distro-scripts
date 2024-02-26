@@ -16,14 +16,16 @@ yes | pkg uninstall dbus
 yes | pkg install proot-distro
 yes | proot-distro install ubuntu
 
-# Set non-interactive frontend and run debconf-set-selections inside proot-distro
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 DEBIAN_FRONTEND=noninteractive /bin/bash -c "
-echo 'Please enter your geographical area (e.g., Europe, America, Asia):'
-read AREA
-echo 'Please enter your city or closest major city (e.g., Berlin, New_York, Tokyo):'
-read CITY
-echo \"tzdata tzdata/Areas select \$AREA\" | debconf-set-selections
-echo \"tzdata tzdata/Zones/\$AREA select \$CITY\" | debconf-set-selections
+# Ensure non-interactive frontend for apt-get
+export DEBIAN_FRONTEND=noninteractive
+
+# Preconfigure tzdata
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 /bin/bash -c "
+echo 'Etc/UTC' > /etc/timezone
+ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
+apt-get update
+apt-get install -y tzdata
+dpkg-reconfigure --frontend noninteractive tzdata
 "
 
 yes | pkg install wget dbus pulseaudio virglrenderer-android

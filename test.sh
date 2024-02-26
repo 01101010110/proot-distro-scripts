@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set non-interactive frontend
-export DEBIAN_FRONTEND=noninteractive
-
 # Set Username
 read -r -p "Select a username: " username </dev/tty
 
@@ -10,23 +7,27 @@ read -r -p "Select a username: " username </dev/tty
 read -r -s -p "Enter password for $username: " password </dev/tty
 echo # move to a new line
 
-# Set timezone
-echo "Please enter your geographical area (e.g., Europe, America, Asia):"
-read AREA
-echo "Please enter your city or closest major city (e.g., Berlin, New_York, Tokyo):"
-read CITY
-echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
-echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
-
 termux-change-repo
 
 # Update and install required packages
 yes | pkg install x11-repo
 yes | pkg update
 yes | pkg uninstall dbus
-yes | pkg install wget dbus proot-distro pulseaudio virglrenderer-android
-yes | pkg install firefox xfce4 
+yes | pkg install proot-distro
 yes | proot-distro install ubuntu
+
+# Set non-interactive frontend and run debconf-set-selections inside proot-distro
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 DEBIAN_FRONTEND=noninteractive /bin/bash -c "
+echo 'Please enter your geographical area (e.g., Europe, America, Asia):'
+read AREA
+echo 'Please enter your city or closest major city (e.g., Berlin, New_York, Tokyo):'
+read CITY
+echo \"tzdata tzdata/Areas select \$AREA\" | debconf-set-selections
+echo \"tzdata tzdata/Zones/\$AREA select \$CITY\" | debconf-set-selections
+"
+
+yes | pkg install wget dbus pulseaudio virglrenderer-android
+yes | pkg install firefox xfce4 
 
 # Setup proot
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update

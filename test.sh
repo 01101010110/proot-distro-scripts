@@ -11,7 +11,7 @@ yes | pkg install x11-repo
 yes | pkg update
 yes | pkg uninstall dbus
 yes | pkg install wget dbus proot-distro pulseaudio virglrenderer-android
-yes | pkg install pavucontrol-qt firefox xwayland xfce4
+yes | pkg install pavucontrol-qt firefox xfce4
 yes | proot-distro install ubuntu
 
 # Setup proot
@@ -45,8 +45,28 @@ chmod +x $HOME/Desktop/firefox.desktop
 kill -9 $(pgrep -f "termux.x11") 2>/dev/null
 
 # Setup x11 app
+wget https://github.com/01101010110/proot-distro-scripts/raw/main/termux-x11.deb
+dpkg -i --force-depends termux-x11.deb
 echo "allow-external-apps = true" >> ~/.termux/termux.properties
-pkg install termux-x11-nightly
 
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 export DISPLAY=:1 && xfce4-session
-termux-x11 :1
+# Kill open X11 processes
+kill -9 $(pgrep -f "termux.x11") 2>/dev/null
+
+# Enable PulseAudio over Network
+pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
+
+# Prepare termux-x11 session
+export XDG_RUNTIME_DIR=${TMPDIR}
+termux-x11 :0 >/dev/null &
+
+# Wait a bit until termux-x11 gets started.
+sleep 3
+
+# Launch Termux X11 main activity
+am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
+sleep 1
+
+# Login in to Environment. 
+proot-distro login debian --shared-tmp -- /bin/bash -c  "export PULSE_SERVER=127.0.0.1 && export XDG_RUNTIME_DIR=\${TMPDIR} && su - $username -c \"env DISPLAY=:0 startxfce4\""
+
+exit 0

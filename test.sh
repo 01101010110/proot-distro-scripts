@@ -25,13 +25,13 @@ yes | pkg install x11-repo
 yes | pkg update
 yes | pkg uninstall dbus
 yes | pkg install wget dbus proot-distro pulseaudio virglrenderer-android
-yes | pkg install firefox xfce4 xrdp
+yes | pkg install firefox xfce4 
 yes | proot-distro install ubuntu
 
 # Setup proot
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt upgrade
-yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install sudo
+yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install sudo xrdp
 
 # Create user
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 groupadd storage

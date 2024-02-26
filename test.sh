@@ -16,7 +16,8 @@ yes | proot-distro install ubuntu
 
 # Setup proot
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update
-yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1.0 apt upgrade
+yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt upgrade
+yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install sudo
 
 # Create user
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 groupadd storage
@@ -36,10 +37,6 @@ pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymou
 
 echo "
 source .sound" >> .bashrc
-
-# Put Firefox icon on Desktop
-cp $HOME/../usr/share/applications/firefox.desktop $HOME/Desktop 
-chmod +x $HOME/Desktop/firefox.desktop
 
 # Kill open X11 processes
 kill -9 $(pgrep -f "termux.x11") 2>/dev/null

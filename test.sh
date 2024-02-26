@@ -18,7 +18,6 @@ read CITY
 echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
 echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
 
-termux-setup-storage
 termux-change-repo
 
 # Update and install required packages

@@ -72,7 +72,7 @@ echo "Installation is complete."
 echo "You will now be logged into your environment automatically."
 echo "In the future, type the word 'Ubuntu' into Termux to start your environment."
 echo "Copy and paste this code to start your xRDP server."
-echo "echo \"alias restart='GALLIUM_DRIVER=virgl service xrdp restart'\" >> \$HOME/.bashrc"
+echo 'echo "alias restart=\'GALLIUM_DRIVER=virgl service xrdp restart\'" >> $HOME/.bashrc'
 echo "Now you can use the word 'restart' to restart your server in the future."
 
 #Log the user into their environment

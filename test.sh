@@ -55,20 +55,12 @@ source .sound" >> .bashrc
 # Enable PulseAudio over Network
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 
-# Ensure non-interactive frontend for apt-get
-export DEBIAN_FRONTEND=noninteractive
-
-# Enters user's selections to bypass manual entry
-echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
-echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
-
 # Install xRDP
-#yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install xrdp
-sudo -E proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt-get -y install xrdp
-
-# Configure xRDP
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > /home/$USERNAME/.xsession
-
-# Stop xRDP service
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp stop
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp start
+proot-distro login ubuntu --shared-tmp -- env DEBIAN_FRONTEND=noninteractive DISPLAY=:1 sh -c '
+  echo "tzdata tzdata/Areas select '$AREA'" | debconf-set-selections
+  echo "tzdata tzdata/Zones/'$AREA' select '$CITY'" | debconf-set-selections
+  yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install xrdp
+  echo "xfce4-session" > /home/$USERNAME/.xsession
+  service xrdp stop
+  service xrdp start
+'

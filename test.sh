@@ -23,7 +23,7 @@ yes | pkg uninstall dbus
 yes | pkg install proot-distro
 yes | proot-distro install ubuntu
 yes | pkg install wget dbus pulseaudio virglrenderer-android
-yes | pkg install firefox xfce4 debconf
+yes | pkg install firefox xfce4
 
 # Setup proot
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update
@@ -56,11 +56,11 @@ source .sound" >> .bashrc
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 
 # Ensure non-interactive frontend for apt-get
-export DEBIAN_FRONTEND=noninteractive
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 export DEBIAN_FRONTEND=noninteractive
 
 # Enters user's selections to bypass manual entry
-echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
-echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
 
 # Install xRDP
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install xrdp -y

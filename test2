@@ -12,8 +12,14 @@ else
     exit 1
 fi
 
+# Copy the startxfce4 file to proot
+#proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 cp /data/data/com.termux/files/usr/bin/startxfce4 
+
 # Display the IP address
 ifconfig | grep 'inet ' | grep -v 'wlan0' | awk '{ print $2}'
 
-xrdp
-vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1
+#xrdp
+#vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1
+
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 xrdp
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 vncserver -xstartup /data/data/com.termux/files/usr/bin/startxfce4 -listen tcp :1

@@ -14,7 +14,7 @@ fi
 
 # Start xrdp and vncserver
 xrdp
-vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1
+vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1
 
 # Display the IP address
 ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2}'

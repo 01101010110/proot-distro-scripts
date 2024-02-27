@@ -6,13 +6,12 @@ echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
 source $HOME/.bashrc
 
 #Set proot aliases
-echo "
-alias virgl='GALLIUM_DRIVER=virpipe '
+echo "alias virgl='GALLIUM_DRIVER=virpipe '
 alias restart='service xrdp restart'
 " >> $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
 
 # Load the changes in Proot-Distro
-source  $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
+source  $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/home/$username/.bashrc
 
 # Clear the screen then instruct the user to type the word 'restart' when they are ready to start their xdrp server
 clear

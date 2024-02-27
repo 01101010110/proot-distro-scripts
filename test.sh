@@ -66,7 +66,7 @@ echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
 source $HOME/.bashrc
 
 # Set an alias in proot=distro to start xrdp server
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "alias start='service xrdp stop && service xrdp start'" >> $HOME/.bashrc
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "alias start='service xrdp restart'" >> $HOME/.bashrc
 
 # Set and alias in proot-distro to stop xrdp server
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "alias stop='service xrdp stop'" >> $HOME/.bashrc

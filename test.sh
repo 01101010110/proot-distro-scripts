@@ -72,9 +72,9 @@ echo "Installation is complete."
 echo "You will now be logged into your environment automatically."
 echo "In the future, type the word 'Ubuntu' into Termux to start your environment."
 echo "Copy and paste the code below to start your xRDP server."
-echo "********************"
-echo "service xrdp restart"
-echo "********************"
+echo "********************************************"
+echo "GALLIUM_DRIVER=virvpipe service xrdp restart"
+echo "********************************************"
 
 
 #Log the user into their environment

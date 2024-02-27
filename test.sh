@@ -60,9 +60,10 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i 's|test -x /etc/
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
 # Set an alias in Termux to login to proot-distro easier
-echo "alias ubuntu='proot-distro login ubuntu --shared-tmp && service xrdp restart'" >> $HOME/.bashrc
+echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
 
 # Load the changes in Termux
 source $HOME/.bashrc
+
 
 

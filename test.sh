@@ -65,7 +65,4 @@ echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
 # Load the changes in Termux
 source $HOME/.bashrc
 
-ubuntu 
-sleep 3
-service xrdp restart
-
+ubuntu

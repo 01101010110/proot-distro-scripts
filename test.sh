@@ -63,7 +63,7 @@ echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
 echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
 
 # Install xRDP
-yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install xrdp
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install xrdp -y
 
 # Configure xRDP
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > /home/$USERNAME/.xsession

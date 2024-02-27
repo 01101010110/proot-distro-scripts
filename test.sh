@@ -7,12 +7,6 @@ read -r -p "Select a username: " username </dev/tty
 read -r -s -p "Enter password for $username: " password </dev/tty
 echo # move to a new line
 
-# Ask user for their timezone
-echo "Please enter your geographical area (e.g., Europe, America, Asia):"
-read AREA
-echo "Please enter your city or closest major city (e.g., Berlin, New_York, Tokyo):"
-read CITY
-
 # Avoids a repo bug
 termux-change-repo
 

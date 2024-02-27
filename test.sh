@@ -7,6 +7,7 @@ read -r -p "Select a username: " username </dev/tty
 read -r -s -p "Enter password for $username: " password </dev/tty
 echo # move to a new line
 
+# Avoids a repo bug
 termux-change-repo
 
 # Update and install required packages
@@ -15,19 +16,6 @@ yes | pkg update
 yes | pkg uninstall dbus
 yes | pkg install proot-distro
 yes | proot-distro install ubuntu
-
-# Ensure non-interactive frontend for apt-get
-export DEBIAN_FRONTEND=noninteractive
-
-# Preconfigure tzdata
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 /bin/bash -c "
-echo 'Etc/UTC' > /etc/timezone
-ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
-apt-get update
-apt-get install -y tzdata
-dpkg-reconfigure --frontend noninteractive tzdata
-"
-
 yes | pkg install wget dbus pulseaudio virglrenderer-android
 yes | pkg install firefox xfce4 
 
@@ -35,7 +23,6 @@ yes | pkg install firefox xfce4
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt upgrade
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install sudo
-yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sudo apt install xrdp
 
 # Create user
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 groupadd storage
@@ -62,10 +49,24 @@ source .sound" >> .bashrc
 # Enable PulseAudio over Network
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 
+# Ensure non-interactive frontend for apt-get
+export DEBIAN_FRONTEND=noninteractive
+
+# Preconfigure tzdata
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 /bin/bash -c "
+echo 'Etc/UTC' > /etc/timezone
+ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
+apt-get update
+apt-get install -y tzdata
+dpkg-reconfigure --frontend noninteractive tzdata
+"
+
+# Install xrdp
+yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sudo apt install xrdp
+
 # Configure xRDP
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > /home/$USERNAME/.xsession
 
 # Stop xRDP service
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp stop
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp start
-

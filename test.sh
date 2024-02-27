@@ -60,18 +60,9 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i 's|test -x /etc/
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
 # Set an alias in Termux to login to proot-distro easier
-echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
+echo "alias ubuntu='proot-distro login ubuntu --shared-tmp && service xrdp restart'" >> $HOME/.bashrc
 
 # Load the changes in Termux
 source $HOME/.bashrc
-
-# Set an alias in proot=distro to start xrdp server
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "alias start='service xrdp restart'" >> $HOME/.bashrc
-
-# Set and alias in proot-distro to stop xrdp server
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "alias stop='service xrdp stop'" >> $HOME/.bashrc
-
-# Load the changes in proot-distro
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 source $HOME/.bashrc
 
 

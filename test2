@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Update the xrdp.ini file to set the port to 5901
+XRDP_INI_PATH="/usr/etc/xrdp/xrdp.ini"
+
+# Check if the xrdp.ini file exists
+if [ -f "$XRDP_INI_PATH" ]; then
+    # Use sed to change the port to 5901
+    sed -i 's/port=-1/port=5901/g' "$XRDP_INI_PATH"
+else
+    echo "Error: $XRDP_INI_PATH does not exist."
+    exit 1
+fi
+
+# Start xrdp and vncserver
+xrdp
+vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1
+
+# Display the IP address
+ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2}'
+
+
+

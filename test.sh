@@ -1,21 +1,15 @@
 #!/bin/bash
 
-# Ensure non-interactive frontend for apt-get
+# Set non-interactive frontend
 export DEBIAN_FRONTEND=noninteractive
 
-sleep 3
-
-
-# Preconfigure tzdata
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 /bin/bash -c "
-echo 'Etc/UTC' > /etc/timezone
-ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
-apt-get update
-apt-get install -y tzdata
-dpkg-reconfigure --frontend noninteractive tzdata
-"
-sleep 3
-
+# Ask user for their timezone
+echo "Please enter your geographical area (e.g., Europe, America, Asia):"
+read AREA
+echo "Please enter your city or closest major city (e.g., Berlin, New_York, Tokyo):"
+read CITY
+echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
+echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
 
 # Install xRDP
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install xrdp

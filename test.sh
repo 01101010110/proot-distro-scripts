@@ -59,6 +59,19 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > 
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
-# Stop xRDP service
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp stop
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp start
+# Set an alias in Termux to login to proot-distro easier
+echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
+
+# Load the changes in Termux
+source $HOME/.bashrc
+
+# Set an alias in proot=distro to start xrdp server
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "alias start='service xrdp stop && service xrdp start'" >> $HOME/.bashrc
+
+# Set and alias in proot-distro to stop xrdp server
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "alias stop='service xrdp stop'" >> $HOME/.bashrc
+
+# Load the changes in proot-distro
+proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 source $HOME/.bashrc
+
+

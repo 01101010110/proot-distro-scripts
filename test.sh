@@ -37,11 +37,6 @@ chmod u+rw $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers
 echo "$username ALL=(ALL) ALL" | tee -a $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers > /dev/null
 chmod u-w $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers
 
-# Set proot timezone
-timezone=$(getprop persist.sys.timezone)
-proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 rm /etc/localtime
-proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 cp /usr/share/zoneinfo/$timezone /etc/localtime
-
 # Enable Sound
 echo "
 pulseaudio --start --exit-idle-time=-1
@@ -53,13 +48,6 @@ source .sound" >> .bashrc
 
 # Enable PulseAudio over Network
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
-
-# Ensure non-interactive frontend for apt-get
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 export DEBIAN_FRONTEND=noninteractive
-
-# Enters user's selections to bypass manual entry
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
 
 # Configure xRDP
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > /home/$username/.xsession

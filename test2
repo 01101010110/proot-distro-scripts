@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Update the xrdp.ini file to set the port to 5901
-XRDP_INI_PATH="../usr/etc/xrdp/xrdp.ini"
+echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
 
-# Check if the xrdp.ini file exists
-if [ -f "$XRDP_INI_PATH" ]; then
-    # Use sed to change the port to 5901
-    sed -i 's/port=-1/port=5901/g' "$XRDP_INI_PATH"
-else
-    echo "Error: $XRDP_INI_PATH does not exist."
-    exit 1
-fi
+# Load the changes in Termux
+source $HOME/.bashrc
 
-echo "xrdp ; vncserver -geometry 1600x700 -listen tcp :1 ; env DISPLAY=:1 xfce4-session" >> ../usr/bin/startxrdp ; chmod +x ../usr/bin/startxrdp
+#Set proot aliases
+echo "
+alias virgl='GALLIUM_DRIVER=virpipe '
+alias restart='service xrdp restart'
+" >> $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
 
-startxrdp
+# Load the changes in Proot-Distro
+source  $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
 
-# Display the IP address
-ifconfig | grep -v 'wlan0' | awk '{ print $2}'
-
+# Clear the screen then instruct the user to type the word 'restart' when they are ready to start their xdrp server
+clear
+ip_address=$(ifconfig wlan0 | grep 'inet ' | awk '{ print $2 }')
+ echo "Installation is complete. Enter the word 'restart' to start your xRDP server."
+ubuntu

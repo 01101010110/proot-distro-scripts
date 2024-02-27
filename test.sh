@@ -67,15 +67,15 @@ source $HOME/.bashrc
 
 # Clear the screen then instruct the user to type the word 'restart' when they are ready to start their xdrp server
 clear
-ifconfig
+ifconfig wlan0 | grep 'inet ' | awk '{print $2}'
 echo "Installation is complete."
 echo "You will now be logged into your environment automatically."
 echo "In the future, type the word 'Ubuntu' into Termux to start your environment."
 echo "Copy and paste the code below to start your xRDP server."
-echo "**************************************************************"
-echo "echo \"alias restart='GALLIUM_DRIVER=virgl service xrdp restart'\" >> \$HOME/.bashrc"
-echo "**************************************************************"
-echo "Now you can use the word 'restart' to restart your server in the future."
+echo "********************"
+echo "service xrdp restart"
+echo "********************"
+
 
 #Log the user into their environment
 proot-distro login ubuntu --shared-tmp

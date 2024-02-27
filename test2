@@ -13,7 +13,7 @@ else
 fi
 
 # Display the IP address
-ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2}'
+ifconfig | grep 'inet ' | grep -v 'wlan0' | awk '{ print $2}'
 
-
-
+xrdp
+vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1

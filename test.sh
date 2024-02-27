@@ -65,17 +65,15 @@ echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
 # Load the changes in Termux
 source $HOME/.bashrc
 
-#Set proot aliases
-echo "
-alias virgl='GALLIUM_DRIVER=virpipe '
-alias restart='service xrdp restart'
-" >> $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
-
-# Load the changes in Proot-Distro
-source  $HOME/../usr/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
-
 # Clear the screen then instruct the user to type the word 'restart' when they are ready to start their xdrp server
 clear
-ip_address=$(ifconfig wlan0 | grep 'inet ' | awk '{ print $2 }')
- echo "Installation is complete. Enter the word 'restart' to start your xRDP server."
-ubuntu
+ifconfig
+echo "Installation is complete."
+echo "You will now be logged into your environment automatically."
+echo "In the future, type the word 'Ubuntu' into Termux to start your environment."
+echo "Copy and paste this code to start your xRDP server."
+echo "echo "alias restart='service xrdp restart'" >> $HOME/.bashrc"
+echo "Now you can use the word 'restart' to restart your server in the future."
+
+#Log the user into their environment
+proot-distro login ubuntu --shared-tmp

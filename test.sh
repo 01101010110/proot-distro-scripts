@@ -23,7 +23,7 @@ yes | pkg uninstall dbus
 yes | pkg install proot-distro
 yes | proot-distro install ubuntu
 yes | pkg install wget dbus pulseaudio virglrenderer-android
-yes | pkg install firefox xfce4 xrdp
+yes | pkg install pavucontrol-qt firefox xfce4 xrdp
 
 # Setup proot
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update

@@ -43,6 +43,11 @@ chmod u+rw $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers
 echo "$username ALL=(ALL) ALL" | tee -a $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers > /dev/null
 chmod u-w $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers
 
+# Set proot timezone
+timezone=$(getprop persist.sys.timezone)
+proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 rm /etc/localtime
+proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 cp /usr/share/zoneinfo/$timezone /etc/localtime
+
 # Enable Sound
 echo "
 pulseaudio --start --exit-idle-time=-1

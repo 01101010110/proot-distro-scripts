@@ -69,6 +69,6 @@ sleep 1
 # Set an alias in Termux to login to proot-distro easier
 echo "alias ubuntu='proot-distro login ubuntu --shared-tmp -- /bin/bash -c \"export PULSE_SERVER=127.0.0.1 && export XDG_RUNTIME_DIR=\\\${TMPDIR} && su - \$username -c \\\"termux-x11 :0 -xstartup \\\\\\\"dbus-launch --exit-with-session xfce4-session\\\\\\\" && env DISPLAY=:0 startxfce4\\\"\"'" >> $HOME/.bashrc
 
-# Login in to Environment
+# Login to Environment
 proot-distro login ubuntu --shared-tmp -- /bin/bash -c "export PULSE_SERVER=127.0.0.1 && export XDG_RUNTIME_DIR=\${TMPDIR} && su - \$username -c \"termux-x11 :0 -xstartup \\\"dbus-launch --exit-with-session xfce4-session\\\" && env DISPLAY=:0 startxfce4\""
 exit 0

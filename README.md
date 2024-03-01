@@ -20,3 +20,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/test.sh -o test.sh && chmod +x test.sh && ./test.sh
 ```
+**Current Tester for the Termux x11 App (to try to fix the display server issue):**
+```
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/ubuntu-x11-app-test.bash -o ubuntu-x11-app.bash && chmod +x ubuntu-x11-app.bash && ./ubuntu-x11-app.bash
+```

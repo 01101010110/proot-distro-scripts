@@ -36,7 +36,13 @@ echo "$username ALL=(ALL) ALL" | tee -a $HOME/../usr/var/lib/proot-distro/instal
 chmod u-w $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers
 
 # Enable Sound
-echo -e "pulseaudio --start --exit-idle-time=-1\npacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" > $HOME/.sound && echo "source $HOME/.sound" >> $HOME/.bashrc
+echo "
+pulseaudio --start --exit-idle-time=-1
+pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
+" > $HOME/.sound
+
+echo "
+source .sound" >> .bashrc
 
 # Setup termux to allow x11 app
 yes | pkg install termux-x11-nightly

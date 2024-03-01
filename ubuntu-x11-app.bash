@@ -36,13 +36,7 @@ echo "$username ALL=(ALL) ALL" | tee -a $HOME/../usr/var/lib/proot-distro/instal
 chmod u-w $HOME/../usr/var/lib/proot-distro/installed-rootfs/ubuntu/etc/sudoers
 
 # Enable Sound
-echo "
-pulseaudio --start --exit-idle-time=-1
-pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
-" > $HOME/.sound
-
-echo "
-source .sound" >> .bashrc
+echo -e "pulseaudio --start --exit-idle-time=-1\npacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" > $HOME/.sound && echo "source $HOME/.sound" >> $HOME/.bashrc
 
 # Setup termux to allow x11 app
 yes | pkg install termux-x11-nightly
@@ -66,7 +60,7 @@ am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
 sleep 1
 
 # Set an alias in Termux to login to proot-distro easier
-echo "alias ubuntu='proot-distro login ubuntu --shared-tmp -- /bin/bash -c \"export PULSE_SERVER=127.0.0.1 && export XDG_RUNTIME_DIR=\\\${TMPDIR} && termux-x11 :0 -xstartup \\\"dbus-launch --exit-with-session xfce4-session\\\" && su - $username -c \\\"env DISPLAY=:0 startxfce4\\\"\"'" >> $HOME/.bashrc
+echo "alias ubuntu='proot-distro login ubuntu --shared-tmp -- /bin/bash -c \"export PULSE_SERVER=127.0.0.1 && export XDG_RUNTIME_DIR=\\\\\${TMPDIR} && termux-x11 :0 -xstartup \\\\\\\"dbus-launch --exit-with-session xfce4-session\\\\\\\" && su - \$username -c \\\\\\\"env DISPLAY=:0 startxfce4\\\\\\\"\"'" >> $HOME/.bashrc
 
 # Login in to Environment
 proot-distro login ubuntu --shared-tmp -- /bin/bash -c "export PULSE_SERVER=127.0.0.1 && export XDG_RUNTIME_DIR=\${TMPDIR} && termux-x11 :0 -xstartup \"dbus-launch --exit-with-session xfce4-session\" && su - $username -c \"env DISPLAY=:0 startxfce4\""

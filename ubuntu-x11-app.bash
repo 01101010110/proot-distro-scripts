@@ -70,4 +70,5 @@ echo "alias ubuntu='proot-distro login ubuntu --shared-tmp -- /bin/bash -c \"exp
 
 # Login in to Environment
 proot-distro login ubuntu --shared-tmp -- /bin/bash -c "export PULSE_SERVER=127.0.0.1 && export XDG_RUNTIME_DIR=\${TMPDIR} && termux-x11 :0 -xstartup \"dbus-launch --exit-with-session xfce4-session\" && su - $username -c \"env DISPLAY=:0 startxfce4\""
+
 exit 0

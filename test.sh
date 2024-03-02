@@ -17,7 +17,7 @@ yes | pkg uninstall dbus
 yes | pkg install proot-distro
 yes | proot-distro install ubuntu
 yes | pkg install wget dbus pulseaudio virglrenderer-android
-yes | pkg install firefox xfce4
+yes | pkg install pavucontrol-qt firefox xfce4
 
 # Setup proot
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update
@@ -49,29 +49,32 @@ source .sound" >> .bashrc
 # Enable PulseAudio over Network
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 
-# Ensure non-interactive frontend for apt-get
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 export DEBIAN_FRONTEND=noninteractive
-
-# Enters user's selections to bypass manual entry
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "tzdata tzdata/Areas select $AREA" | debconf-set-selections
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "tzdata tzdata/Zones/$AREA select $CITY" | debconf-set-selections
-
 # Install xRDP
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install xrdp -y
 
 # Configure xRDP
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > /home/$username/.xsession
-
-# Modify the xRDP start script
+@@ -59,23 +12,4 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" >
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
-# Stop xRDP service
-proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp stop
+# Set an alias in Termux to login to proot-distro easier
+echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
 
-alias Ubuntu='GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 proot-distro login ubuntu'>> $HOME/.bashrc
-source ~/.bashrc
+# Load the changes in Termux
+source $HOME/.bashrc
 
-GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 proot-distro login ubuntu
-# Login to environment 
+# Clear the screen then instruct the user to type the word 'restart' when they are ready to start their xdrp server
+clear
+ifconfig wlan0 | grep 'inet ' | awk '{print $2}'
+echo "Installation is complete."
+echo "You will now be logged into your environment automatically."
+echo "In the future, type the word 'Ubuntu' into Termux to start your environment."
+echo "Copy and paste the code below to start your xRDP server."
+echo "********************************************"
+echo "GALLIUM_DRIVER=virvpipe service xrdp restart"
+echo "********************************************"
+
+
+#Log the user into their environment
 GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 proot-distro login ubuntu

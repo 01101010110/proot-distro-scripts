@@ -54,19 +54,18 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install xrdp -y
 
 # Configure xRDP
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" > /home/$username/.xsession
-@@ -59,23 +12,4 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 echo "xfce4-session" >
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
 # Set an alias in Termux to login to proot-distro easier
-echo "alias ubuntu='proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
+echo "alias ubuntu='GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 proot-distro login ubuntu --shared-tmp'" >> $HOME/.bashrc
 
 # Load the changes in Termux
 source $HOME/.bashrc
 
 # Clear the screen then instruct the user to type the word 'restart' when they are ready to start their xdrp server
 clear
-ifconfig wlan0 | grep 'inet ' | awk '{print $2}'
+ifconfig | grep 'inet ' | awk '{print $2}'
 echo "Installation is complete."
 echo "You will now be logged into your environment automatically."
 echo "In the future, type the word 'Ubuntu' into Termux to start your environment."
@@ -77,4 +76,4 @@ echo "********************************************"
 
 
 #Log the user into their environment
-GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 proot-distro login ubuntu
+GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 proot-distro login ubuntu --shared-tmp

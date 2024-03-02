@@ -68,3 +68,7 @@ proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 sed -i '/exec \/bin\/sh
 
 # Stop xRDP service
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 service xrdp stop
+
+
+# Login to environment 
+GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 proot-distro login ubuntu

@@ -29,9 +29,12 @@ proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt remove xterm -y
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/xfce4-terminal 50
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal
 
+# Removes Debian Sensible Web Browser
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt remove sensible-utils -y
+
 # Set Firefox as the default browser
-sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox 200
-sudo update-alternatives --set x-www-browser /usr/bin/firefox
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox 200
+proot-distro login debian --shared-tmp -- env DISPLAY=:1  update-alternatives --set x-www-browser /usr/bin/firefox
 
 # Create user
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 groupadd storage

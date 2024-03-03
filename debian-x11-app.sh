@@ -41,10 +41,6 @@ proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --s
 # Removes Debian Sensible Web Browser
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt remove sensible-utils -y
 
-# Set Firefox as the default browser
-proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --install /usr/bin/x-www-browser x-www-browser /data/data/com.termux/files/usr/bin/firefox 200
-proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --set x-www-browser /data/data/com.termux/files/usr/bin/firefox
-
 # Create user
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 groupadd storage
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 groupadd wheel

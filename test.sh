@@ -12,8 +12,8 @@ echo "alias run='sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 servic
 source ~/.bashrc
 
 # Start the xrdp server
-sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0  service xrdp stop
-sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0  service xrdp start
+sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp stop
+sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp start
 
 # Clear the screen
 clear

@@ -25,12 +25,10 @@ source .sound" >> .bashrc
 
 # Setup termux to allow x11 app
 pkg install termux-x11-nightly -y
-echo "allow-external-apps = true" >> ~/.termux/termux.properties
+echo "allow-external-apps = true" >> ~/.termux/termux.properties && kill -9 $(pgrep -f "termux.x11") 2>/dev/null
 
 # Kill open X11 processes
-kill -9 $(pgrep -f "termux.x11") 2>/dev/null
-
-sleep 3
+#kill -9 $(pgrep -f "termux.x11") 2>/dev/null
 
 # Enable PulseAudio over Network
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1

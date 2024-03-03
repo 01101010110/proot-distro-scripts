@@ -5,10 +5,13 @@ This repository contains scripts that are able to be executed using one line of 
 
 ### Features
 
+* Minimalist build with nothing extra added
 * Load the environment by typing one word, 'ubuntu' or 'debian'.
 * Hardware acceleration is embedded into the alias 
-* Minimalist build with nothing extra added
-
+* User is able to select their own username and password
+* Automatically adds the new user to the sudoer's file
+* Shared-tmp is enabled, allowing use of termux installed packages
+* Sound is working
 
 ## Ubuntu Environment Scripts
 

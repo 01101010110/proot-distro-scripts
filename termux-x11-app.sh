@@ -47,7 +47,7 @@ am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
 sleep 1
 
 # Set an alias to load termux environment faster
-echo "alias termux='am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity >/dev/null 2>&1 && sleep 1 && termux-x11 :3 -xstartup "dbus-launch --exit-with-session xfce4-session" && startxfce4'" >> $HOME/.bashrc
+echo 'alias termux="am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity >/dev/null 2>&1 && sleep 1 && termux-x11 :3 -xstartup '\''dbus-launch --exit-with-session xfce4-session'\'' && startxfce4"' >> $HOME/.bashrc
 source ~/.bashrc
 
 # Login to Environment

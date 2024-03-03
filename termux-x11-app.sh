@@ -25,7 +25,7 @@ source .sound" >> .bashrc
 
 # Setup termux to allow x11 app
 pkg install termux-x11-nightly -y
-echo "allow-external-apps = true" >> ~/.termux/termux.properties && kill -9 $(pgrep -f "termux.x11") 2>/dev/null
+echo "allow-external-apps = true" >> ~/.termux/termux.properties 
 
 # Kill open X11 processes
 #kill -9 $(pgrep -f "termux.x11") 2>/dev/null

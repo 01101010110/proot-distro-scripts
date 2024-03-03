@@ -17,7 +17,6 @@ yes | pkg update
 # Grant storage access
 termux-setup-storage
 
-#yes | pkg uninstall dbus
 pkg install dbus proot-distro pulseaudio virglrenderer-android -y
 pkg install pavucontrol-qt firefox -y
 yes | proot-distro install debian

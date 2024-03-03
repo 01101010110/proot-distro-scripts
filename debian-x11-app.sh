@@ -20,7 +20,18 @@ yes | proot-distro install debian
 # Setup proot
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt upgrade
-proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt install sudo xfce4 dbus-x11 -y
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt install sudo xfce4 xfce4-terminal dbus-x11 -y
+
+# Removes glitchy xterminal
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt remove xterm -y
+
+# Set xfce4 as the default terminal
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/xfce4-terminal 50
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal
+
+# Set Firefox as the default browser
+sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox 200
+sudo update-alternatives --set x-www-browser /usr/bin/firefox
 
 # Create user
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 groupadd storage

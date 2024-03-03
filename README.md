@@ -16,8 +16,6 @@ This repository contains scripts that are able to be executed using one line of 
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/ubuntu-x11-app.sh -o ubuntu-x11-app.sh && chmod +x ubuntu-x11-app.sh && ./ubuntu-x11-app.sh
 ```
-This script is currently using xfce4 through Termux, I am working on fixing it so the xfce4 gui is setup in proot-distro instead. 
-The changes will be tested in the Debian script first then ported over to Ubuntu.
 
 
 ## Debian Environment Scripts

@@ -12,7 +12,7 @@ termux-setup-storage
 
 # Install hardware acceleration, sound, and firefox
 pkg install dbus pulseaudio virglrenderer-android -y
-pkg install pavucontrol-qt firefox -y
+pkg install pavucontrol-qt firefox xfce4 -y
 # Enable Sound
 echo "
 pulseaudio --start --exit-idle-time=-1

@@ -20,7 +20,7 @@ yes | proot-distro install debian
 # Setup proot
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt upgrade
-proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt install sudo xfce4 xfce4goodies dbus-x11-y
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt install sudo xfce4 xfce4goodies dbus-x11 -y
 
 # Create user
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 groupadd storage

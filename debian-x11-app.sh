@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Grant storage access
-termux-setup-storage
-
 # Set Username
 read -r -p "Select a username: " username </dev/tty
 
@@ -16,7 +13,11 @@ termux-change-repo
 # Update and install required packages
 yes | pkg install x11-repo
 yes | pkg update
-yes | pkg uninstall dbus
+
+# Grant storage access
+termux-setup-storage
+
+#yes | pkg uninstall dbus
 pkg install dbus proot-distro pulseaudio virglrenderer-android -y
 pkg install pavucontrol-qt firefox -y
 yes | proot-distro install debian

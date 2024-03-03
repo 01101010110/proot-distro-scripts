@@ -10,14 +10,14 @@ Note that this repository is not ready! I am live testing it now and building as
 
 **Ubuntu for the Termux x11 App:**
 ```
-curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/ubuntu-x11-app.bash -o ubuntu-x11-app.bash && chmod +x ubuntu-x11-app.bash && ./ubuntu-x11-app.bash
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/ubuntu-x11-app.sh -o ubuntu-x11-app.sh && chmod +x ubuntu-x11-app.sh && ./ubuntu-x11-app.sh
 ```
 
 ## Debian Scripts
 
 **Debian for the Termux x11 App:**
 ```
-curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.bash -o debian-x11-app.bash && chmod +x debian-x11-app.bash && ./debian-x11-app.bash
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.sh -o debian-x11-app.sh && chmod +x debian-x11-app.sh && ./debian-x11-app.sh
 ```
 
 ## Miscellanious Scripts

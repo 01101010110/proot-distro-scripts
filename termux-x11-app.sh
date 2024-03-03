@@ -30,6 +30,8 @@ echo "allow-external-apps = true" >> ~/.termux/termux.properties
 # Kill open X11 processes
 kill -9 $(pgrep -f "termux.x11") 2>/dev/null
 
+sleep 3
+
 # Enable PulseAudio over Network
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 
@@ -37,7 +39,7 @@ pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth
 export XDG_RUNTIME_DIR=${TMPDIR}
 
 # Set Display to :1 since Ubuntu runs on :0
-termux-x11 :1 >/dev/null &
+termux-x11 :3 >/dev/null &
 
 # Wait a bit until termux-x11 gets started.
 sleep 3

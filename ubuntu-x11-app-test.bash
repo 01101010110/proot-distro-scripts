@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Set Username
@@ -14,7 +13,7 @@ termux-change-repo
 yes | pkg install x11-repo
 yes | pkg update
 yes | pkg uninstall dbus
-yes | pkg install wget dbus proot-distro pulseaudio virglrenderer-android virglrenderer
+yes | pkg install wget dbus proot-distro pulseaudio virglrenderer-android
 yes | pkg install pavucontrol-qt firefox xfce4
 yes | proot-distro install ubuntu
 
@@ -54,9 +53,6 @@ kill -9 $(pgrep -f "termux.x11") 2>/dev/null
 
 # Enable PulseAudio over Network
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
-
-#Open an opengl server
-virgl_test_server_android &
 
 # Prepare termux-x11 session
 export XDG_RUNTIME_DIR=${TMPDIR}

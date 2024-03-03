@@ -10,9 +10,10 @@ yes | pkg update
 # Grant storage access - (cannot be ran prior to installing x11-repo)
 termux-setup-storage
 
-# Install hardware acceleration, sound, and firefox
+# Install hardware acceleration, xfce4 gui, sound, and firefox
 pkg install dbus pulseaudio virglrenderer-android -y
 pkg install pavucontrol-qt firefox xfce4 -y
+
 # Enable Sound
 echo "
 pulseaudio --start --exit-idle-time=-1

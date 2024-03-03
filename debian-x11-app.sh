@@ -13,14 +13,14 @@ termux-change-repo
 yes | pkg install x11-repo
 yes | pkg update
 yes | pkg uninstall dbus
-pkg install wget dbus proot-distro pulseaudio virglrenderer-android -y
-pkg install pavucontrol-qt firefox xfce4 -y
+pkg install dbus proot-distro pulseaudio virglrenderer-android -y
+pkg install pavucontrol-qt firefox -y
 yes | proot-distro install debian
 
 # Setup proot
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt upgrade
-proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt install sudo -y
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt install sudo xfce4 xfce4goodies dbus-x11-y
 
 # Create user
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 groupadd storage

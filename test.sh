@@ -9,7 +9,7 @@ sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
 # Create an alias to restart the xrdp server in the future by typing the wword 'run' 
 #echo "alias run='sudo service xrdp stop && sudo service xrdp start'" >> ~/.bashrc
-echo "alias run='sudo service xrdp stop && sudo service xrdp start && ifconfig | grep "inet " | cut -d" " -f10'" >> ~/.bashrc
+echo "alias run='sudo service xrdp stop && sudo service xrdp start && ifconfig | grep 'inet' | cut -d' ' -f10'" >> ~/.bashrc
 source ~/.bashrc
 
 # Start the xrdp server

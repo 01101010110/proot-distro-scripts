@@ -11,7 +11,7 @@ This repository contains scripts that are able to be executed using one line of 
 
 ## Ubuntu Environment Scripts
 
-**Ubuntu for the Termux x11 App:**
+**Ubuntu xfce4 environment for the Termux x11 App:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/ubuntu-x11-app.sh -o ubuntu-x11-app.sh && chmod +x ubuntu-x11-app.sh && ./ubuntu-x11-app.sh
 ```
@@ -20,14 +20,14 @@ The changes will be tested in the Debian script first then ported over to Ubuntu
 
 ## Debian Environment Scripts
 
-**Debian for the Termux x11 App:**
+**Debian xfce4 environment for the Termux x11 App:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.sh -o debian-x11-app.sh && chmod +x debian-x11-app.sh && ./debian-x11-app.sh
 ```
 
 ## Termux Environment Scripts
 
-**Termux environment for the Termux x11 App:**
+**Termux xfce4 environment for the Termux x11 App:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/termux-x11-app.sh -o termux-x11-app.sh && chmod +x termux-x11-app.sh && ./termux-x11-app.sh
 ```

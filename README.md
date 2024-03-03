@@ -6,7 +6,7 @@ This repository contains scripts that are able to be executed using one line of 
 Note that this repository is not ready! I am live testing it now and building as I go so please wait for an update on the XDA Thread before running any of the curl commands.
 
 
-## Ubuntu Scripts
+## Ubuntu Environment Scripts
 
 **Ubuntu for the Termux x11 App:**
 ```
@@ -15,11 +15,18 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 This script is currently using xfce4 through Termux, I am working on fixing it so the xfce4 gui is setup in proot-distro instead. 
 The changes will be tested in the Debian script first then ported over to Ubuntu.
 
-## Debian Scripts
+## Debian Environment Scripts
 
 **Debian for the Termux x11 App:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.sh -o debian-x11-app.sh && chmod +x debian-x11-app.sh && ./debian-x11-app.sh
+```
+
+## Termux Environment Scripts
+
+**Termux environment for the Termux x11 App:**
+```
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/termux-x11-app.sh -o termux-x11-app.sh && chmod +x termux-x11-app.sh && ./termux-x11-app.sh
 ```
 
 ## Miscellanious Scripts

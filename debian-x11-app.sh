@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Grant storage access
+termux-setup-storage
+
 # Set Username
 read -r -p "Select a username: " username </dev/tty
 

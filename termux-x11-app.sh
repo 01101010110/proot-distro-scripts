@@ -48,6 +48,6 @@ echo "alias termux='am start --user 0 -n com.termux.x11/com.termux.x11.MainActiv
 source ~/.bashrc
 
 # Login to Environment
-termux-x11 :3 -xstartup \"dbus-launch --exit-with-session xfce4-session\" && startxfce4
+termux-x11 :3 -xstartup "dbus-launch --exit-with-session xfce4-session" && startxfce4
 
 exit 0

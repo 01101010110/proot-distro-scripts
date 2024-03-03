@@ -7,6 +7,7 @@ read -r -p "Select a username: " username </dev/tty
 read -r -s -p "Enter password for $username: " password </dev/tty
 echo # move to a new line
 
+# To avoid a repo bug
 termux-change-repo
 
 # Update and install required packages
@@ -33,8 +34,8 @@ proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --s
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt remove sensible-utils -y
 
 # Set Firefox as the default browser
-proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox 200
-proot-distro login debian --shared-tmp -- env DISPLAY=:1  update-alternatives --set x-www-browser /usr/bin/firefox
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --install /usr/bin/x-www-browser x-www-browser /data/data/com.termux/files/usr/bin/firefox 200
+proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --set x-www-browser /data/data/com.termux/files/usr/bin/firefox
 
 # Create user
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 groupadd storage

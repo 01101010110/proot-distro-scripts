@@ -10,26 +10,31 @@ echo # move to a new line
 # To avoid a repo bug
 termux-change-repo
 
-# Update and install required packages
+# Install the x11-repo and update all packages
 yes | pkg install x11-repo
 yes | pkg update
 
-# Grant storage access
+# Grant storage access - (cannot be ran prior to installing x11-repo)
 termux-setup-storage
 
+# Install hardware acceleration, proot-distro, sound, and firefox
 pkg install dbus proot-distro pulseaudio virglrenderer-android -y
 pkg install pavucontrol-qt firefox -y
+
+# Install Debian in proot-distro
 yes | proot-distro install debian
 
-# Setup proot
+# Update proot-distro
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt upgrade
+
+#Install proot-distro packages (sudo, gui, terminal)
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt install sudo xfce4 xfce4-terminal dbus-x11 -y
 
 # Removes glitchy xterminal
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt remove xterm -y
 
-# Set xfce4 as the default terminal
+# Set xfce4-terminal as the default terminal
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/xfce4-terminal 50
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal
 

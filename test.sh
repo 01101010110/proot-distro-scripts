@@ -8,13 +8,12 @@ sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' 
 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
 # Create an alias to restart the xrdp server in the future by typing the wword 'run' 
-#echo "alias run='sudo service xrdp stop && sudo service xrdp start'" >> ~/.bashrc
-echo "alias run='sudo service xrdp stop && sudo service xrdp start && ifconfig | grep 'inet''" >> ~/.bashrc
+echo "alias run='sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp stop && sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp start && ifconfig | grep 'inet''" >> ~/.bashrc
 source ~/.bashrc
 
 # Start the xrdp server
-sudo service xrdp stop
-sudo service xrdp start
+sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0  service xrdp stop
+sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0  service xrdp start
 
 # Clear the screen
 clear

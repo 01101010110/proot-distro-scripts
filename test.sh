@@ -23,7 +23,6 @@ ifconfig | grep 'inet' | cut -d' ' -f10
 
 # Show user completion message
 echo "====================="
-echo "Installation complete
+echo "Installation complete"
 echo "====================="
-echo
 echo "Use your local ip address provided above (usually begins with '192.168') to connect remotely"

@@ -48,6 +48,6 @@ Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro
 
 **Script to add xRDP Support:**
 ```
-curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/setup-xrdp.sh -o setup-xrdp.sh && chmod +x setup-xrdp.sh && source setup-xrdp.sh
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup.sh.sh -o xrdp-setup.sh && chmod +x xrdp-setup.sh && source xrdp-setup.sh
 ```
 Run this command inside of your environment (works for all environments listed above) to add xRDP support, which allows you to connect to your environment remotely using a computer. 

@@ -1,7 +1,7 @@
 
 # Proot-Distro Scripts
 
-This repository contains scripts that are able to be executed using one line of code, and without having to preinstall anything other than the Termux app and Termux-x11 viewing app. Additional scripts are provided in the Miscellanious section below to add xRDP or VNC support to your environment, so you can connect to your environment with a computer. 
+This repository contains scripts that are able to be executed using one line of code, and without having to preinstall anything other than the Termux app and Termux-x11 viewing app. Additional scripts are provided in the Miscellanious section below to add xRDP or VNC support to your environment, so you can connect to your environment remotely with a computer. 
 
 ### Features
 

@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Clear the screen
+clear
+
 # Ask the user about the environment
-echo "Is this installation for a Termux environment? Say no if you are installing Linux environments like, Ubuntu, Debian, etc. (yes/no)"
+echo "Is the xrdp installation for a Termux environment? Say no if you are installing xrdp for Linux environments like, Ubuntu, Debian, etc. (yes/no)"
 read IS_TERMUX
 
 if [ "$IS_TERMUX" = "yes" ]; then
@@ -43,7 +46,7 @@ else
 fi
 
 # Clear the screen
-#clear
+clear
 
 # Display local IP address
 ifconfig | grep 'inet' | cut -d' ' -f10

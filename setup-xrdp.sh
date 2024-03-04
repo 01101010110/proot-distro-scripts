@@ -4,7 +4,7 @@
 clear
 
 # Set alias called 'inet' to pull local ip address
-echo 'alias inet='"'"'ifconfig | grep "inet " | awk "{print \$2}"'"'"'' >> $HOME/.bashrc
+alias inet='ifconfig | grep inet | awk "{print \$2}"'
 source ~/.bashrc
 
 # Ask the user about the environment

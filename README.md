@@ -28,14 +28,13 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.sh -o debian-x11-app.sh && chmod +x debian-x11-app.sh && ./debian-x11-app.sh
 ```
 
-
 ## Termux Environment Scripts
 
 **Termux xfce4 environment for the Termux x11 App:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/termux-x11-app.sh -o termux-x11-app.sh && chmod +x termux-x11-app.sh && ./termux-x11-app.sh
 ```
-
+Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro. 
 
 ## Miscellanious Scripts
 

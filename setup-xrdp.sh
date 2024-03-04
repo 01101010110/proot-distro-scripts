@@ -42,7 +42,7 @@ else
 
     # Create an alias to restart the xrdp server in the future by typing 'xrdpstart', this is inverse to the termux alias as to not cause conflicts
     #echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && sudo ifconfig | grep inet'" >> ~/.bashrc
-    echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && ip addr show | grep inet | grep -v inet6 | awk \"{print \\\$2}\" | cut -d\"/\" -f1'" >> ~/.bashrc
+    echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start ; ifconfig | grep inet'" >> ~/.bashrc
   
 
     # Create an alias to stop the xrdp server by typing xrdpstop   

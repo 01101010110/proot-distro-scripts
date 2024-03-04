@@ -53,5 +53,5 @@ else
     source ~/.bashrc
 
     # Start the xrdp server
-    xrdpstart
+    sudo service xrdp stop && sudo service xrdp start && inet
 fi

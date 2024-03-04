@@ -41,5 +41,5 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 **Script to add xRDP Support:**
 ```
-curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/setup-xrdp.sh -o setup-xrdp.sh && chmod +x setup-xrdp.sh && ./setup-xrdp.sh
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/setup-xrdp.sh -o setup-xrdp.sh && chmod +x setup-xrdp.sh && source setup-xrdp.sh && ./setup-xrdp.sh
 ```

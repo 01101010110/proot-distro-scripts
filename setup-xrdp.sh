@@ -3,7 +3,7 @@
 # Clear the screen
 clear
 
-# Set alias called 'inet' to pull local ip address
+# Set alias called 'inet' to pull local ip address --required -source to be added to the main curl command
 alias inet='ifconfig | grep inet | awk "{print \$2}"'
 
 # Ask the user about the environment

@@ -15,8 +15,7 @@ This repository contains scripts that are able to be executed using one line of 
 
 ### Dependencies
 
-* Termux needs to be installed. (Can be a fresh install)
-* [Termux direct download link](https://f-droid.org/repo/com.termux_118.apk)
+* Termux needs to be installed. (Can be a fresh install) [Termux direct download link](https://f-droid.org/repo/com.termux_118.apk)
 * Termux's x11 apk needs to be installed, choose the correct version for your device.  
 * [Arm64 x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-arm64-v8a-debug.apk) - For android devices running arm64. Most modern devices will run this.
 * [Armeabi-v7a x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-armeabi-v7a-debug.apk) - For devices running armeabi-v7a. Older devices usually.

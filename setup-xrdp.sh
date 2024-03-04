@@ -40,8 +40,8 @@ else
     sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
     sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
-     # Create an alias to restart the xrdp server in the future by typing 'startxrdp'
-    echo "alias startxrdp='GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp stop && sudo service xrdp start && ifconfig | grep inet'" >> ~/.bashrc
+    # Create an alias to restart the xrdp server in the future by typing 'startxrdp'
+    echo "alias startxrdp='service xrdp stop && sudo service xrdp start && ifconfig | grep inet'" >> ~/.bashrc
 
     # Create an alias to stop the xrdp server by typing stopxrdp    
     echo "alias stopxrdp='service xrdp stop'" >> ~/.bashrc
@@ -50,7 +50,7 @@ else
     source ~/.bashrc
 
     # Start the xrdp server
-    sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp stop && service xrdp start
+    service xrdp stop && sudo service xrdp start
 fi
 
 # Clear the screen

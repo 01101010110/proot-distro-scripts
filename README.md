@@ -51,7 +51,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 ## Miscellanious Scripts
 
-Run this command inside of your environment (works for all environments listed above) to add xRDP support, which allows you to connect to your environment remotely using a computer. 
+Adds xRDP support, which allows you to connect to your environment remotely using a computer. (Works for all environments listed above) 
 
 **Copy and paste inside of your environment:**
 ```

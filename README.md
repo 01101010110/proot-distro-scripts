@@ -55,6 +55,6 @@ Adds xRDP support, which allows you to connect to your environment remotely usin
 
 **Copy and paste inside of your environment:**
 ```
-curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup.sh.sh -o xrdp-setup.sh && chmod +x xrdp-setup.sh && source xrdp-setup.sh
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup.sh -o xrdp-setup.sh && chmod +x xrdp-setup.sh && source xrdp-setup.sh
 ```
 

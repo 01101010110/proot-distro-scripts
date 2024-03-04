@@ -41,10 +41,10 @@ else
     sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
     # Create an alias to restart the xrdp server in the future by typing 'xrdpstart', this is inverse to the termux alias as to not cause conflicts
-    echo "alias xrdpstart='sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp stop && service xrdp start && ifconfig | grep inet'" >> ~/.bashrc
+    echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && ifconfig | grep inet'" >> ~/.bashrc
 
     # Create an alias to stop the xrdp server by typing xrdpstop   
-    echo "alias xrdpstop='sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp stop'" >> ~/.bashrc
+    echo "alias xrdpstop='sudo service xrdp stop'" >> ~/.bashrc
 
     # Load the aliases
     source ~/.bashrc

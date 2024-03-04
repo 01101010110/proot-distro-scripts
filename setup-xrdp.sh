@@ -8,7 +8,7 @@ echo "Is the xrdp installation for a Termux environment? Say no if you are insta
 read IS_TERMUX
 
 # Set alias called 'inet' to pull local ip address
-echo "alias inet='ifconfig | grep \"inet \" | awk \"{print \\$2}\"'" >> $HOME/.bashrc
+echo 'alias inet='"'"'ifconfig | grep "inet " | awk "{print \$2}"'"'"'' >> $HOME/.bashrc
 source $HOME/.bashrc
 
 if [ "$IS_TERMUX" = "yes" ]; then

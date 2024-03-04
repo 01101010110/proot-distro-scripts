@@ -33,7 +33,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 ## Debian Environment 
 
-Builds a Debian Bookworm Arm64 proot-distro environment.
+Builds a Debian Bookworm proot-distro environment.
 
 **Copy and paste into Termux:**
 ```

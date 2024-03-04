@@ -7,8 +7,8 @@ clear
 echo "Is the xrdp installation for a Termux environment? Say no if you are installing xrdp for Linux environments like, Ubuntu, Debian, etc. (yes/no)"
 read IS_TERMUX
 
-# Create an alias to display local IP address
-    alias inet="ifconfig | grep 'inet ' | awk '{print \$2}'"
+# Create an alias called 'inet' to display local IP address, then load it
+alias inet="ifconfig | grep 'inet ' | awk '{print \$2}'" ; source ~/.bashrc
 
 if [ "$IS_TERMUX" = "yes" ]; then
     # Termux environment setup
@@ -67,3 +67,4 @@ echo "====================="
 echo "Installation complete"
 echo "====================="
 echo "Use your local IP address provided above (usually begins with '192.168') to connect remotely."
+exit 0

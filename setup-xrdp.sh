@@ -59,9 +59,6 @@ fi
 # Clear the screen
 #clear
 
-# Display local IP address
-inet
-
 # Show user completion message
 echo "====================="
 echo "Installation complete"

@@ -50,7 +50,8 @@ else
     source ~/.bashrc
 
     # Start the xrdp server
-    service xrdp stop && sudo service xrdp start
+    sudo service xrdp stop 
+    sudo service xrdp start
 fi
 
 # Clear the screen

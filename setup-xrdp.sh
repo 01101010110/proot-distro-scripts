@@ -67,4 +67,3 @@ echo "====================="
 echo "Installation complete"
 echo "====================="
 echo "Use your local IP address provided above (usually begins with '192.168') to connect remotely."
-exit 0

@@ -7,6 +7,9 @@ clear
 echo "Is the xrdp installation for a Termux environment? Say no if you are installing xrdp for Linux environments like, Ubuntu, Debian, etc. (yes/no)"
 read IS_TERMUX
 
+# Create an alias to display local IP address
+    alias inet="ifconfig | grep 'inet ' | awk '{print \$2}'"
+
 if [ "$IS_TERMUX" = "yes" ]; then
     # Termux environment setup
     echo "Setting up xRDP for Termux..."
@@ -18,7 +21,7 @@ if [ "$IS_TERMUX" = "yes" ]; then
     sed -i 's/port=-1/port=5901/' ../usr/etc/xrdp/xrdp.ini
 
     # Create an Alias to startxrdp
-    echo "alias startxrdp='xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1'" >> ~/.bashrc
+    echo "alias startxrdp='xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 ; inet'" >> ~/.bashrc
 
     # Create an Alias to stop xrdp
     echo "alias stopxrdp='xrdp -k ; vncserver -kill :1'" >> ~/.bashrc
@@ -39,9 +42,6 @@ else
     # Configure xRDP
     sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
     sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
-    
-    # Create an alias to display local IP address
-    alias inet="ifconfig | grep 'inet ' | awk '{print \$2}'"
 
     # Create an alias to restart the xrdp server in the future by typing 'xrdpstart', this is inverse to the termux alias as to not cause conflicts
     echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && inet'" >> ~/.bashrc
@@ -60,7 +60,7 @@ fi
 #clear
 
 # Display local IP address
-ifconfig | grep 'inet ' | awk '{print \$2}
+inet
 
 # Show user completion message
 echo "====================="

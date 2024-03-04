@@ -12,7 +12,7 @@ if [ "$IS_TERMUX" = "yes" ]; then
     pkg install xrdp -y
 
     # Configure xRDP
-    sed -i 's/port=-1/port=5901/' ../usr/etc/xrdp/xrdp.ini
+    sed -i 's/port=-1/port=5909/' ../usr/etc/xrdp/xrdp.ini
 
     # Create an Alias
 

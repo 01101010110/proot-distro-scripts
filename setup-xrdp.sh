@@ -12,8 +12,7 @@ if [ "$IS_TERMUX" = "yes" ]; then
     pkg install xrdp -y
 
     # Configure xRDP
-    sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
-    sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
+    sed -i 's/port=-1/port=5901/' ../usr/etc/xrdp/xrdp.ini
 
     # Create an Alias
 

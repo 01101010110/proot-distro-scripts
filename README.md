@@ -1,4 +1,3 @@
-
 # Proot-Distro Scripts
 
 This repository contains scripts that are able to be executed using one line of code, and without having to preinstall anything other than the Termux app and Termux-x11 viewing app. Additional scripts are provided in the Miscellanious section below to add xRDP or VNC support to your environment, so you can connect to your environment remotely with a computer. 
@@ -47,8 +46,10 @@ Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro
 
 ## Miscellanious Scripts
 
+Run this command inside of your environment (works for all environments listed above) to add xRDP support, which allows you to connect to your environment remotely using a computer. 
+
 **Script to add xRDP Support:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup.sh.sh -o xrdp-setup.sh && chmod +x xrdp-setup.sh && source xrdp-setup.sh
 ```
-Run this command inside of your environment (works for all environments listed above) to add xRDP support, which allows you to connect to your environment remotely using a computer. 
+

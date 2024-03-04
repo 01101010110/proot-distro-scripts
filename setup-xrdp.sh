@@ -4,7 +4,9 @@
 clear
 
 # Ask the user about the environment
-echo "Is the xrdp installation for a Termux environment? Say no if you are installing xrdp for Linux environments like, Ubuntu, Debian, etc. (yes/no)"
+echo "Is the xrdp installation for a Termux environment?"
+echo "Say no if you are installing xrdp for Linux environments like, Ubuntu, Debian, etc."
+echo "Enter (yes/no)"
 read IS_TERMUX
 
 # Set alias called 'inet' to pull local ip address

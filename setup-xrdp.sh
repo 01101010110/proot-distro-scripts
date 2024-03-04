@@ -15,6 +15,7 @@ if [ "$IS_TERMUX" = "yes" ]; then
     sed -i 's/port=-1/port=5901/' ../usr/etc/xrdp/xrdp.ini
 
     # Create an Alias
+    echo "xrdp ; vncserver -listen tcp :1 ; env DISPLAY=:1 xfce4-session" >> ../usr/bin/startxrdp ; chmod +x ../usr/bin/startxrdp
 
     # Start the xrdp server
     xrdp

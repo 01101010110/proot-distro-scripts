@@ -39,10 +39,12 @@ else
     # Configure xRDP
     sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
     sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
-
+    
+    # Create an alias to display local IP address
+    echo "alias inet='ifconfig | grep 'inet' | cut -d' ' -f10'" >> ~/.bashrc
     # Create an alias to restart the xrdp server in the future by typing 'xrdpstart', this is inverse to the termux alias as to not cause conflicts
     #echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && sudo ifconfig | grep inet'" >> ~/.bashrc
-    echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start ; ifconfig | grep inet'" >> ~/.bashrc
+    echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && inet'" >> ~/.bashrc
   
 
     # Create an alias to stop the xrdp server by typing xrdpstop   

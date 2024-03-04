@@ -60,7 +60,7 @@ else
 fi
 
 # Clear the screen
-#clear
+clear
 
 # Show user completion message
 echo "====================="

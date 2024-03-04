@@ -20,14 +20,11 @@ if [ "$IS_TERMUX" = "yes" ]; then
     # Configure xRDP
     sed -i 's/port=-1/port=5901/' ../usr/etc/xrdp/xrdp.ini
 
-    # Create an Alias called 'startxrdp' to start the xRDP server quickly
-    echo "alias startxrdp='xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 ; inet'" >> $HOME/.bashrc
+    # Create an Alias called 'stopxrdp' to stop the xRDP server and load the alias when completed
+    echo "alias stopxrdp='xrdp -k ; vncserver -kill :1'" >> $HOME/.bashrc ; source ~/.bashrc
 
-    # Create an Alias called 'stopxrdp' to stop the xRDP server
-    echo "alias stopxrdp='xrdp -k ; vncserver -kill :1'" >> $HOME/.bashrc
-
-    # Load the aliases
-    source ~/.bashrc
+    # Create an Alias called 'startxrdp' to start the xRDP server quickly and load the alias when completed
+    echo "alias startxrdp='stopxrdp ; xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 ; inet'" >> $HOME/.bashrc ; source ~/.bashrc
     
     # Start the xrdp server
     startxrdp

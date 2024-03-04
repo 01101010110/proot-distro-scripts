@@ -47,7 +47,4 @@ source ~/.bashrc
 # Login to Environment
 am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1 && sleep 1 && termux-x11 :3 -xstartup "dbus-launch --exit-with-session xfce4-session" && startxfce4
 
-# Delete script after installation is complete
-rm termux-x11-app.sh
-
 exit 0

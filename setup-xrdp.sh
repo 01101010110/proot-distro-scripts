@@ -63,7 +63,8 @@ fi
 #clear
 
 # Display local IP address
-ifconfig | grep 'inet' | cut -d' ' -f10
+#ifconfig | grep 'inet' | cut -d' ' -f10
+ifconfig | grep 'inet ' | awk '{print \$2}
 
 # Show user completion message
 echo "====================="

@@ -28,8 +28,11 @@ if [ "$IS_TERMUX" = "yes" ]; then
 
     # Create an Alias called 'startxrdp' to start the xRDP server quickly and load the alias when completed
     echo "alias startxrdp='stopxrdp ; xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 ; inet'" >> $HOME/.bashrc
+
+    # Clear the screen
+    clear
     
-    # Start the xrdp server
+    # Start the xrdp server and display local ip address
     xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 ; inet
 
 else
@@ -52,6 +55,9 @@ else
     # Load the aliases
     source ~/.bashrc
 
-    # Start the xrdp server
+    # Clear the screen
+    clear
+
+    # Start the xrdp server and display local ip address
     sudo service xrdp stop && sudo service xrdp start && inet
 fi

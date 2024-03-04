@@ -12,13 +12,13 @@ if [ "$IS_TERMUX" = "yes" ]; then
     pkg install xrdp -y
 
     # Configure xRDP
-    sed -i 's/port=-1/port=5909/' ../usr/etc/xrdp/xrdp.ini
+    sed -i 's/port=-1/port=5901/' ../usr/etc/xrdp/xrdp.ini
 
     # Create an Alias
 
     # Start the xrdp server
     xrdp
-    vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :9
+    vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1
 
 else
     # Linux environment setup

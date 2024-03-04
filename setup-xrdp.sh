@@ -3,6 +3,9 @@
 # Clear the screen
 clear
 
+# Set alias called 'inet' to pull local ip address
+alias inet='ifconfig | grep inet | awk "{print \$2}"'
+
 # Ask the user about the environment
 echo "Is the xrdp installation for a Termux environment?"
 echo "Say no if you are installing xrdp for Linux environments." 
@@ -14,9 +17,6 @@ if [ "$IS_TERMUX" = "yes" ]; then
     # Termux environment setup
     echo "Setting up xRDP for Termux..."
 
-    # Set alias called 'inet' to pull local ip address
-    alias inet='ifconfig | grep inet | awk "{print \$2}"'
-
     # Install xRDP
     pkg install xrdp -y
 
@@ -25,11 +25,9 @@ if [ "$IS_TERMUX" = "yes" ]; then
 
     # Create an Alias called 'stopxrdp' to stop the xRDP server and load the alias when completed
     echo "alias stopxrdp='xrdp -k ; vncserver -kill :1'" >> $HOME/.bashrc 
-    source ~/.bashrc
 
     # Create an Alias called 'startxrdp' to start the xRDP server quickly and load the alias when completed
     echo "alias startxrdp='stopxrdp ; xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 ; inet'" >> $HOME/.bashrc
-    source ~/.bashrc
     
     # Start the xrdp server
     xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 ; inet
@@ -37,9 +35,6 @@ if [ "$IS_TERMUX" = "yes" ]; then
 else
     # Linux environment setup
     echo "Setting up xRDP for Linux..."
-
-    # Set alias called 'inet' to pull local ip address
-    alias inet='ifconfig | grep inet | awk "{print \$2}"'
 
     # Install xRDP
     sudo apt install xrdp -y

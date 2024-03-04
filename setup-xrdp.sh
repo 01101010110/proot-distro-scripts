@@ -41,7 +41,7 @@ else
 fi
 
 # Clear the screen
-clear
+#clear
 
 # Display local IP address
 ifconfig | grep 'inet' | cut -d' ' -f10

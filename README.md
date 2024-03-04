@@ -13,6 +13,15 @@ This repository contains scripts that are able to be executed using one line of 
 * Shared-tmp is enabled, allowing use of termux installed packages
 * Sound is working
 
+### Dependencies
+
+* Termux needs to be installed. (Can be a fresh install)
+* [Termux direct download link](https://f-droid.org/repo/com.termux_118.apk)
+* Termux's x11 apk needs to be installed, choose the correct version for your device.  
+* [Arm64 x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-arm64-v8a-debug.apk) - For phones running arm64. Most modern phones will run this
+* [Armeabi-v7a x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-armeabi-v7a-debug.apk) - For devices running armeabi-v7a. Older devices usually.
+* [Universal Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-universal-debug.apk) - When in doubt!
+
 ## Ubuntu Environment Scripts
 
 **Ubuntu xfce4 environment for the Termux x11 App:**

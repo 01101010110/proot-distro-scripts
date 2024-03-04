@@ -25,7 +25,7 @@ This repository contains scripts that are able to be executed using one line of 
 
 Builds an Ubuntu Mantic Minotaur proot-distro environment.
 
-**Ubuntu xfce4 environment for the Termux x11 App:**
+**Copy and paste into Termux:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/ubuntu-x11-app.sh -o ubuntu-x11-app.sh && chmod +x ubuntu-x11-app.sh && ./ubuntu-x11-app.sh
 ```
@@ -35,7 +35,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 Builds a Debian Bookworm Arm64 proot-distro environment.
 
-**Debian xfce4 environment for the Termux x11 App:**
+**Copy and paste into Termux:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.sh -o debian-x11-app.sh && chmod +x debian-x11-app.sh && ./debian-x11-app.sh
 ```
@@ -44,7 +44,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro. 
 
-**Termux xfce4 environment for the Termux x11 App:**
+**Copy and paste into Termux:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/termux-x11-app.sh -o termux-x11-app.sh && chmod +x termux-x11-app.sh && ./termux-x11-app.sh
 ```
@@ -53,7 +53,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 Run this command inside of your environment (works for all environments listed above) to add xRDP support, which allows you to connect to your environment remotely using a computer. 
 
-**Script to add xRDP Support:**
+**Copy and paste inside of your environment:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup.sh.sh -o xrdp-setup.sh && chmod +x xrdp-setup.sh && source xrdp-setup.sh
 ```

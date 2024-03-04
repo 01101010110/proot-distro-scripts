@@ -41,7 +41,7 @@ else
     sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
     # Create an alias to restart the xrdp server in the future by typing 'startxrdp'
-    echo "alias startxrdp='service xrdp stop && sudo service xrdp start && ifconfig | grep inet'" >> ~/.bashrc
+    echo "alias startxrdp='sudo service xrdp stop && sudo service xrdp start && ifconfig | grep inet'" >> ~/.bashrc
 
     # Create an alias to stop the xrdp server by typing stopxrdp    
     echo "alias stopxrdp='service xrdp stop'" >> ~/.bashrc

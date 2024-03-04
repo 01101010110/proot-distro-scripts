@@ -5,7 +5,7 @@ This repository contains scripts that are able to be executed using one line of 
 
 ### Features
 
-* Minimalist builds with nothing extra added
+* Minimalist build with nothing extra added
 * Load the environment by typing one word, 'ubuntu', 'debian', or 'termux'.
 * Hardware acceleration is embedded into the alias 
 * User is able to select their own username and password

@@ -5,13 +5,13 @@ This repository contains scripts that are able to be executed using one line of 
 
 ### Features
 
-* Minimalist build with nothing extra added
+* Minimalist builds in 3 different flavors, with nothing extra added
+* All three environments are able to be installed, not just one
 * Load the environment by typing one word, 'ubuntu', 'debian', or 'termux'.
 * Hardware acceleration is embedded into the alias 
 * User is able to select their own username and password
 * Automatically adds the new user to the sudoer's file
 * Shared-tmp is enabled, allowing use of termux installed packages
-* All three environments are able to be installed, not just one
 * Working sound in all the environments
 
 ### Dependencies

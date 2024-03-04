@@ -55,12 +55,3 @@ else
     # Start the xrdp server
     xrdpstart
 fi
-
-# Clear the screen
-clear
-
-# Show user completion message
-echo "====================="
-echo "Installation complete"
-echo "====================="
-echo "Use your local IP address provided above (usually begins with '192.168') to connect remotely."

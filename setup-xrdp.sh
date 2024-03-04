@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Ask the user about the environment
-echo "Is this installation for a Termux environment? (yes/no)"
+echo "Is this installation for a Termux environment? Say no if you are installing Linux environments like, Ubuntu, Debian, etc. (yes/no)"
 read IS_TERMUX
 
 if [ "$IS_TERMUX" = "yes" ]; then
@@ -16,6 +16,7 @@ if [ "$IS_TERMUX" = "yes" ]; then
 
     # Create an Alias
     echo "xrdp ; vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1" >> ../usr/bin/startxrdp ; chmod +x ../usr/bin/startxrdp
+    echo "xrdp -k ; vncserver -kill :1" >> ../usr/bin/stopxrdp ; chmod +x ../usr/bin/stopxrdp
 
     # Start the xrdp server
     xrdp

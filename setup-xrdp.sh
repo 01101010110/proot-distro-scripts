@@ -18,16 +18,16 @@ if [ "$IS_TERMUX" = "yes" ]; then
     sed -i 's/port=-1/port=5901/' ../usr/etc/xrdp/xrdp.ini
 
     # Create an Alias to startxrdp
-    echo "alias startxrdp='xrdp && vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1'" >> ~/.bashrc
+    echo "alias startxrdp='xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1'" >> ~/.bashrc
 
     # Create an Alias to stop xrdp
-    echo "alias stopxrdp='xrdp -k && vncserver -kill :1'" >> ~/.bashrc
+    echo "alias stopxrdp='xrdp -k ; vncserver -kill :1'" >> ~/.bashrc
 
     # Load the aliases
     source ~/.bashrc
     
     # Start the xrdp server
-    startxrdp
+    xrdp ; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1
 
 else
     # Linux environment setup
@@ -40,9 +40,9 @@ else
     sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
     sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
-    # Create an alias to restart the xrdp server in the future by typing startxrdp
+     # Create an alias to restart the xrdp server in the future by typing 'startxrdp'
     echo "alias startxrdp='sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp stop && service xrdp start && ifconfig | grep inet'" >> ~/.bashrc
-    
+
     # Create an alias to stop the xrdp server by typing stopxrdp    
     echo "alias stopxrdp='sudo service xrdp stop'" >> ~/.bashrc
 
@@ -50,7 +50,7 @@ else
     source ~/.bashrc
 
     # Start the xrdp server
-    startxrdp
+    sudo GALLIUM_DRIVER=virpipe MESA_GL_VERSION_OVERRIDE=4.0 service xrdp stop && service xrdp start
 fi
 
 # Clear the screen

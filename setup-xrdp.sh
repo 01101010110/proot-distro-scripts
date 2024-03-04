@@ -41,7 +41,7 @@ else
     sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
     
     # Create an alias to display local IP address
-    echo "alias inet=\"ifconfig | grep 'inet' | cut -d' '\"" >> ~/.bashrc
+    alias inet="ifconfig | grep 'inet ' | awk '{print \$2}'"
 
     # Create an alias to restart the xrdp server in the future by typing 'xrdpstart', this is inverse to the termux alias as to not cause conflicts
     #echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && sudo ifconfig | grep inet'" >> ~/.bashrc

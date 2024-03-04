@@ -15,13 +15,10 @@ if [ "$IS_TERMUX" = "yes" ]; then
     sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
     sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
 
-    # Create an alias to restart the xrdp server in the future by typing the word 'run'
-    echo "alias run='service xrdp stop && service xrdp start && ifconfig | grep inet'" >> ~/.bashrc
-    source ~/.bashrc
+    # Create an Alias
 
     # Start the xrdp server
-    service xrdp stop
-    service xrdp start
+
 
 else
     # Linux environment setup

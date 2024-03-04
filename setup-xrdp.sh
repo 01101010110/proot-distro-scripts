@@ -17,7 +17,8 @@ if [ "$IS_TERMUX" = "yes" ]; then
     # Create an Alias
 
     # Start the xrdp server
-
+    xrdp
+    vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :9
 
 else
     # Linux environment setup

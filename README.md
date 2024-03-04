@@ -21,7 +21,9 @@ This repository contains scripts that are able to be executed using one line of 
 * [Armeabi-v7a x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-armeabi-v7a-debug.apk) - For devices running armeabi-v7a. Older devices usually.
 * [Universal x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-universal-debug.apk) - When in doubt!
 
-## Ubuntu Environment Scripts
+## Ubuntu Environment 
+
+Builds an Ubuntu Mantic Minotaur proot-distro environment.
 
 **Ubuntu xfce4 environment for the Termux x11 App:**
 ```
@@ -29,20 +31,23 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 
 
-## Debian Environment Scripts
+## Debian Environment 
+
+Builds a Debian Bookworm Arm64 proot-distro environment.
 
 **Debian xfce4 environment for the Termux x11 App:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.sh -o debian-x11-app.sh && chmod +x debian-x11-app.sh && ./debian-x11-app.sh
 ```
 
-## Termux Environment Scripts
+## Termux Environment 
+
+Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro. 
 
 **Termux xfce4 environment for the Termux x11 App:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/termux-x11-app.sh -o termux-x11-app.sh && chmod +x termux-x11-app.sh && ./termux-x11-app.sh
 ```
-Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro. 
 
 ## Miscellanious Scripts
 

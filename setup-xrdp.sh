@@ -19,7 +19,7 @@ if [ "$IS_TERMUX" = "yes" ]; then
 
     # Start the xrdp server
     xrdp
-    vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1
+    vncserver -xstartup ../usr/bin/startxfce4 -listen tcp :1 env DISPLAY=:1 xfce4-session
 
 else
     # Linux environment setup

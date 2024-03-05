@@ -82,13 +82,4 @@ Adds VNC support, which allows you to connect to your environment remotely using
 This is a placeholder for now
 ```
 
-#
-## Termux chocolate-doom assistance
-
-TBD 
-
-**Copy and paste inside of your environment:**
-```
-This is a placeholder for now
-```
 

@@ -36,7 +36,7 @@ This repository contains scripts that are able to be executed using one line of 
 #
 ## Ubuntu Environment 
 
-<img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/ubuntu.png?raw=true" width="100" height="200"><img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/ubuntu2.png?raw=true" width="100" height="200">
+<img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/ubuntu.png?raw=true" width="100" height="200"> <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/ubuntu2.png?raw=true" width="100" height="200">
 
 Builds an Ubuntu Mantic Minotaur proot-distro environment with an xfce4 provided GUI.
 

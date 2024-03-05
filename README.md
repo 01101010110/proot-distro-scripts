@@ -96,3 +96,5 @@ You need to run this adb command to fix the process 9 error that will force clos
 adb shell device_config put activity_manager max_phantom_processes 2147483647
 ```
 
+## See the XDA thread for more nuanced details
+https://xdaforums.com/t/guide-no-root-how-to-install-debian-or-ubuntu-environments-on-android-in-termux-using-proot-distro.4570275/

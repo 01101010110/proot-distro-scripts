@@ -20,6 +20,10 @@ This repository contains scripts that are able to be executed using one line of 
 * [Arm64 x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-arm64-v8a-debug.apk) - For android devices running arm64. Most modern devices will run this.
 * [Armeabi-v7a x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-armeabi-v7a-debug.apk) - For devices running armeabi-v7a. Older devices usually.
 * [Universal x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-universal-debug.apk) - When in doubt!
+* Lastly, you need to run this adb command to fix the process 9 error that will force close Termux
+```
+adb shell device_config put activity_manager max_phantom_processes 2147483647
+```
 
 ### Installation
 

@@ -48,6 +48,8 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 Builds a Debian Bookworm proot-distro environment with an xfce4 provided GUI.
 
+<img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/debian.png?raw=true" width="100" height="200">
+
 **Copy and paste into Termux:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.sh -o debian-x11-app.sh && chmod +x debian-x11-app.sh && ./debian-x11-app.sh

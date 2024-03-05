@@ -1,6 +1,6 @@
 # Proot-Distro Scripts
 
-This repository contains scripts that are able to be executed using one line of code, and without having to preinstall anything other than the Termux app and Termux-x11 viewing app. Additional scripts are provided in the Miscellaneous section below to add xRDP or VNC support to your environment, so you can connect to your environment remotely with a computer. 
+This repository contains scripts that are able to be executed using one line of code, and without having to preinstall anything other than the Termux app and Termux-x11 viewing app. Additional scripts are provided below to add xRDP or VNC support to your environment, so you can connect to your environment remotely with a computer. 
 
 ### Features
 
@@ -21,6 +21,7 @@ This repository contains scripts that are able to be executed using one line of 
 * [Armeabi-v7a x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-armeabi-v7a-debug.apk) - For devices running armeabi-v7a. Older devices usually.
 * [Universal x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-universal-debug.apk) - When in doubt!
 
+#
 ## Ubuntu Environment 
 
 Builds an Ubuntu Mantic Minotaur proot-distro environment.
@@ -30,7 +31,7 @@ Builds an Ubuntu Mantic Minotaur proot-distro environment.
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/ubuntu-x11-app.sh -o ubuntu-x11-app.sh && chmod +x ubuntu-x11-app.sh && ./ubuntu-x11-app.sh
 ```
 
-
+#
 ## Debian Environment 
 
 Builds a Debian Bookworm proot-distro environment.
@@ -40,6 +41,7 @@ Builds a Debian Bookworm proot-distro environment.
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/debian-x11-app.sh -o debian-x11-app.sh && chmod +x debian-x11-app.sh && ./debian-x11-app.sh
 ```
 
+#
 ## Termux Environment 
 
 Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro. 
@@ -49,7 +51,8 @@ Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/termux-x11-app.sh -o termux-x11-app.sh && chmod +x termux-x11-app.sh && ./termux-x11-app.sh
 ```
 
-## Miscellaneous Scripts
+#
+## Optional xRDP Support
 
 Adds xRDP support, which allows you to connect to your environment remotely using a computer. (Works for all environments listed above) 
 
@@ -58,3 +61,14 @@ Adds xRDP support, which allows you to connect to your environment remotely usin
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup.sh -o xrdp-setup.sh && chmod +x xrdp-setup.sh && source xrdp-setup.sh
 ```
 
+#
+## Optional VNC Support
+
+Adds VNC support, which allows you to connect to your environment remotely using a computer. (Works for all environments listed above) 
+
+**Copy and paste inside of your environment:**
+```
+This is a placeholder for now
+```
+
+##

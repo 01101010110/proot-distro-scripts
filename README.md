@@ -30,7 +30,7 @@ This repository contains scripts that are able to be executed using one line of 
 * The script will install everything needed and prompt towards the end for language selection.
 * When the script completes, it will open the x11 app for us. The app will freeze the first run.
 * Force close Termux, then type in the alias of environment you installed, 'ubuntu', 'debian', or 'termux'.
-* Now the app will run without any problems and hardware acceleration enabled always.
+* Now the app will run without any problems and have hardware acceleration enabled always.
 
 #
 ## Ubuntu Environment 

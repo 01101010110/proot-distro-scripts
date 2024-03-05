@@ -25,7 +25,7 @@ This repository contains scripts that are able to be executed using one line of 
 #
 ## Ubuntu Environment 
 
-Builds an Ubuntu Mantic Minotaur proot-distro environment.
+Builds an Ubuntu Mantic Minotaur proot-distro environment with an xfce4 provided GUI.
 
 **Copy and paste into Termux:**
 ```
@@ -35,7 +35,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 #
 ## Debian Environment 
 
-Builds a Debian Bookworm proot-distro environment.
+Builds a Debian Bookworm proot-distro environment with an xfce4 provided GUI.
 
 **Copy and paste into Termux:**
 ```

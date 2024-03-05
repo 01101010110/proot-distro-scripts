@@ -30,6 +30,7 @@ This repository contains scripts that are able to be executed using one line of 
 * When the script completes, it will open the x11 app for us. The app will freeze the first run.
 * Force close Termux, then type in the alias of environment you installed, 'ubuntu', 'debian', or 'termux'.
 * Now the app will run without any problems and have hardware acceleration enabled always.
+
 <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/installationscript.png?raw=true" width="100" height="200"><img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/frozenx11.png?raw=true" width="100" height="200"><img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/termuxappinfo.png?raw=true" width="100" height="200"><img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/forcestoptermux.png?raw=true" width="100" height="200">
 
 #

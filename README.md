@@ -89,7 +89,7 @@ Adds VNC support, which allows you to connect to your environment remotely using
 This is a placeholder for now
 ```
 
-### Process 9 error
+## Process 9 error
 
 You need to run this adb command to fix the process 9 error that will force close Termux
 ```

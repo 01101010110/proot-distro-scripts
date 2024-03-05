@@ -12,7 +12,6 @@ This repository contains scripts that are able to be executed using one line of 
 * Automatically adds the new user to the sudoer's file.
 * Shared-tmp is enabled, allowing use of termux installed packages.
 * Working sound in all of the environments.
-* Runs DOOM!
 
 ### Dependencies
 

@@ -70,7 +70,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 
 #
-## Optional xRDP Support
+## Optional xRDP Support --- not ready yet
 
 Adds xRDP support, which allows you to connect to your environment remotely using a computer. (Works for all environments listed above) 
 

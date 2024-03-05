@@ -12,6 +12,7 @@ This repository contains scripts that are able to be executed using one line of 
 * Automatically adds the new user to the sudoer's file.
 * Shared-tmp is enabled, allowing use of termux installed packages.
 * Working sound in all of the environments.
+* Runs DOOM!
 
 ### Dependencies
 
@@ -71,4 +72,13 @@ Adds VNC support, which allows you to connect to your environment remotely using
 This is a placeholder for now
 ```
 
-##
+#
+## Termux chocolate-doom assistance
+
+TBD 
+
+**Copy and paste inside of your environment:**
+```
+This is a placeholder for now
+```
+

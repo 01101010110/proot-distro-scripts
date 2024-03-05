@@ -22,6 +22,16 @@ This repository contains scripts that are able to be executed using one line of 
 * [Armeabi-v7a x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-armeabi-v7a-debug.apk) - For devices running armeabi-v7a. Older devices usually.
 * [Universal x11 Apk](https://github.com/termux/termux-x11/releases/download/nightly/app-universal-debug.apk) - When in doubt!
 
+### Installation
+
+* Select an environment below, Ubuntu, Debian, or Termux, and copy it's code.
+* Paste your code into Termux and press enter.
+* You will be asked to select a repository, just press enter twice. (Prevents a repo bug)
+* The script will install everything needed and prompt towards the end for language selection.
+* When the script completes, it will open the x11 app for us. The app will freeze the first run.
+* Force close Termux, then type in the alias of environment you installed, 'ubuntu', 'debian', or 'termux'.
+* Now the app will run without any problems and hardware acceleration enabled always.
+
 #
 ## Ubuntu Environment 
 

@@ -52,9 +52,9 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 #
 ## Debian Environment 
 
-Builds a Debian Bookworm proot-distro environment with an xfce4 provided GUI.
-
 <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/debian.png?raw=true" width="100" height="200"> <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/debian2.png?raw=true" width="100" height="200">
+
+Builds a Debian Bookworm proot-distro environment with an xfce4 provided GUI.
 
 **Copy and paste into Termux:**
 ```
@@ -63,6 +63,8 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 #
 ## Termux Environment 
+
+<img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/termux.png?raw=true" width="100" height="200"><img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/termux2.png?raw=true" width="100" height="200">
 
 Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro. 
 

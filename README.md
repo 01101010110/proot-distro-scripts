@@ -8,7 +8,7 @@ This repository contains scripts that are able to be executed using one line of 
 * All three environments are able to be installed, not just one.
 * Load the environment by typing one word, 'ubuntu', 'debian', or 'termux'.
 * Hardware acceleration is embedded into the alias.
-* User is able to select their own username and password.
+* Users are able to select their own username and password.
 * Automatically adds the new user to the sudoer's file.
 * Shared-tmp is enabled, allowing use of termux installed packages.
 * Working sound in all of the environments.

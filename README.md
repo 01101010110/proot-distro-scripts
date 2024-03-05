@@ -42,7 +42,7 @@ adb shell device_config put activity_manager max_phantom_processes 2147483647
 
 <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/ubuntu.png?raw=true" width="100" height="200"> <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/ubuntu2.png?raw=true" width="100" height="200">
 
-Builds an Ubuntu Mantic Minotaur proot-distro environment with an xfce4 provided GUI.
+Builds an Ubuntu Mantic Minotaur proot-distro environment with an xfce4 provided GUI. Installs in about 30 minutes to an hour.
 
 **Copy and paste into Termux:**
 ```
@@ -54,7 +54,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/debian.png?raw=true" width="100" height="200"> <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/debian2.png?raw=true" width="100" height="200">
 
-Builds a Debian Bookworm proot-distro environment with an xfce4 provided GUI.
+Builds a Debian Bookworm proot-distro environment with an xfce4 provided GUI. Installs in about 30 minutes to an hour.
 
 **Copy and paste into Termux:**
 ```
@@ -66,7 +66,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 
 <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/termux.png?raw=true" width="100" height="200"> <img src="https://github.com/01101010110/proot-distro-scripts/blob/main/Pictures/termux2.png?raw=true" width="100" height="200">
 
-Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro. 
+Builds a pure Termux environment with an xfce4 provided GUI, and no proot-distro. Installs in about 5-10 minutes.
 
 **Copy and paste into Termux:**
 ```

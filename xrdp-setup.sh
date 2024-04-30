@@ -12,7 +12,7 @@ proot-distro login debian --shared-tmp -- env DISPLAY=:1 echo "alias xrdpstart='
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 echo "alias xrdpstop='sudo service xrdp stop'" >> ~/.bashrc
 
 # Set alias called 'inet' to pull local ip address
-proot-distro login debian --shared-tmp -- env DISPLAY=:1 echo "alias inet='ifconfig | grep inet | awk "{print \$2}"'" >> ~/.bashrc && source ~/.bashrc
+echo \"alias inet='ifconfig | grep inet | awk \\"'{print \\\$2}'\\"'\" >> ~/.bashrc && source ~/.bashrc
 
 # Load the aliases, clear the screen, start xrdp. then display local ip address to connect to
 proot-distro login debian --shared-tmp -- env DISPLAY=:1 clear && xrdpstart && inet

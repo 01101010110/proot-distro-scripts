@@ -11,6 +11,7 @@ echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && ifco
 # Create an alias to stop the xrdp server by typing xrdpstop   
 echo "alias xrdpstop='sudo service xrdp stop'" >> ~/.bashrc && source ~/.bashrc
 
-
+# Let user know installation is complete
+echo "Xrdp is installed. To use, type xrdpstart and connect to the WLAN0 local IP with your PC."
 
 

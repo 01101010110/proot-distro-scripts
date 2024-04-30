@@ -12,6 +12,6 @@ echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && ifco
 echo "alias xrdpstop='sudo service xrdp stop'" >> ~/.bashrc && source ~/.bashrc
 
 # Let user know installation is complete
-echo "Xrdp is installed. To use, type xrdpstart and connect to the WLAN0 local IP with your PC."
+clear && echo "Xrdp is installed. To use, type xrdpstart and connect to the WLAN0 local IP with your PC."
 
 

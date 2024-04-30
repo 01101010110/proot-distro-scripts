@@ -70,13 +70,23 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 
 #
-## Optional xRDP Support --- not ready yet
+## Optional xRDP Support --- For Ubuntu and Debian Environments Only!
 
-Adds xRDP support, which allows you to connect to your environment remotely using a computer. (Works for all environments listed above) 
+Adds xRDP support, which allows you to connect to your environment remotely using a computer. 
 
 **Copy and paste inside of your environment:**
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup.sh -o xrdp-setup.sh && chmod +x xrdp-setup.sh && source xrdp-setup.sh
+```
+
+#
+## Optional xRDP Support --- For Termux Only Environments! --- Not ready yet, being built now
+
+Adds xRDP support, which allows you to connect to your environment remotely using a computer. 
+
+**Copy and paste inside of Termux:**
+```
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup-termux.sh -o xrdp-setup-termux.sh && chmod +x xrdp-setup-termux.sh && source xrdp-setup-termux.sh
 ```
 
 #

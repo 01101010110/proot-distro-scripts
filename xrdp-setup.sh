@@ -1,9 +1,6 @@
 # Install xRDP
 sudo apt install xrdp -y
 
-# Set alias called 'inet' to pull local ip address
-alias inet='ifconfig | grep inet | awk "{print \$2}"'
-
 # Configure xRDP
 sed -i 's|test -x /etc/X11/Xsession && exec /etc/X11/Xsession|exec startxfce4|' /etc/xrdp/startwm.sh
 sed -i '/exec \/bin\/sh \/etc\/X11\/Xsession/d' /etc/xrdp/startwm.sh
@@ -14,11 +11,10 @@ echo "alias xrdpstart='sudo service xrdp stop && sudo service xrdp start && inet
 # Create an alias to stop the xrdp server by typing xrdpstop   
 echo "alias xrdpstop='sudo service xrdp stop'" >> ~/.bashrc
 
-# Load the aliases
-source ~/.bashrc
+# Set alias called 'inet' to pull local ip address
+echo "alias inet='ifconfig | grep inet | awk "{print \$2}"'" >> ~/.bashrc
 
-# Clear the screen
-clear
+# Load the aliases, clear the screen, start xrdp. then display local ip address to connect to
+source ~/.bashrc && clear && xrdpstart && inet
 
-# Start the xrdp server and display local ip address
-sudo service xrdp stop && sudo service xrdp start && inet
+

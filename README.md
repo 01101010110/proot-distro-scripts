@@ -80,7 +80,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 
 #
-## Optional xRDP Support --- For Termux Only Environments! --- Not ready yet, being built now
+## Optional xRDP Support --- For Termux Only Environments!
 
 Adds xRDP support, which allows you to connect to your environment remotely using a computer. 
 

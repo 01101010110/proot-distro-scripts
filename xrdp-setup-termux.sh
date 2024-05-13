@@ -11,8 +11,8 @@ sed -i 's/port=-1/port=5901/' $PREFIX/etc/xrdp/xrdp.ini
 #echo "alias startxrdp='stopxrdp && xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 && ifconfig'" >> ~/.bashrc
 
 #Test
-echo "alias stopxrdp='xrdp -k; pgrep Xtightvnc | xargs kill -9'" >> ~/.bashrc
-echo "alias startxrdp='stopxrdp; xrdp; vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 && ifconfig'" >> ~/.bashrc
+echo "alias stopxrdp='xrdp -k && pgrep Xtightvnc | xargs kill -9'" >> ~/.bashrc
+echo "alias startxrdp='stopxrdp && xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 && ifconfig'" >> ~/.bashrc
 
 # Load the aliases for the current session
 source ~/.bashrc

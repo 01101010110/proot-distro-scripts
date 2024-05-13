@@ -17,4 +17,4 @@ source ~/.bashrc
 xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 
 
 # Let user know installation is complete
-clear && echo "XRDP is installed. To use, type startxrdp and connect to the WLAN0 local IP with your PC."
+clear && echo "XRDP is installed. To use, type startxrdp and connect to the WLAN0 local IP with your PC. You can close xrdp by typing stopxrdp."

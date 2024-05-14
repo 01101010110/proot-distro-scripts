@@ -105,6 +105,28 @@ You need to run this adb command to fix the process 9 error that will force clos
 ```
 adb shell device_config put activity_manager max_phantom_processes 2147483647
 ```
+If you want to run the code above in Termux, instead of using a PC, here is a video and written instructions:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q8xbCkHXAq8" frameborder="0" allowfullscreen></iframe>
+
+Install adb in Termux by running this code:
+```
+pkg install android-tools -y
+```
+Then open settings and enable developer's options by selecting "About phone" then hit "Build" 7 times.
+
+Back out of this menu and go into developer's options and enable wireless debugging.
+
+Put settings into split screen mode by pressing the square button on the bottom right of your phone, and hold the settings icon until the split screen icon shows up.
+
+Then select Termux and in settings select pair with a code. In Termux type:
+```
+adb pair 
+``` 
+Then type your pairing info.
+
+Note that if you need to see your pairing info again, do not press the back button or it will break the pairing process. Use the square button then click on termux and when the window readjusts, you will be able to see the pairing info again.
+
+After you have completed this process you can type adb connect and connect to your phone with the ip and port provided in the wireless debugging menu. You can then paste the Process 9 fix code.
 
 ## See the XDA thread for more nuanced details
 https://xdaforums.com/t/guide-no-root-how-to-install-debian-or-ubuntu-environments-on-android-in-termux-using-proot-distro.4570275/

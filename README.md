@@ -90,13 +90,23 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 
 #
-## Optional VNC Support
+## Optional VNC Support --- For Ubuntu and Debian Environments Only!
 
-Adds VNC support, which allows you to connect to your environment remotely using a computer. (Works for all environments listed above) 
+Adds VNC support, which allows you to connect to your environment remotely using a computer.  
 
 **Copy and paste inside of your environment:**
 ```
-This is a placeholder for now
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/vnc-setup.sh -o vnc-setup.sh && chmod +x vnc-setup.sh && source vnc-setup.sh
+```
+
+#
+## Optional VNC Support --- For Termux Only Environments!
+
+Adds VNC support, which allows you to connect to your environment remotely using a computer. 
+
+**Copy and paste inside of your environment:**
+```
+curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/vnc-setup-termux.sh -o vnc-setup-termux.sh && chmod +x vnc-setup-termux.sh && source vnc-setup-termux.sh
 ```
 
 ## Process 9 error

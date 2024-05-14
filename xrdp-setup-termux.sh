@@ -6,10 +6,6 @@ pkg install xrdp -y
 # Configure xRDP
 sed -i 's/port=-1/port=5901/' $PREFIX/etc/xrdp/xrdp.ini
 
-# Create startxrdp script
-echo -e "#!/bin/bash\nxrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 && ifconfig" > /data/data/com.termux/files/usr/bin/startxrdp
-chmod +x /data/data/com.termux/files/usr/bin/startxrdp
-
 # Write aliases to the shell configuration file
 echo 'alias stopxrdp="xrdp -k && vncserver -kill :1"' >> $HOME/.bashrc
 echo 'alias startxrdp="xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 && ifconfig"' >> $HOME/.bashrc

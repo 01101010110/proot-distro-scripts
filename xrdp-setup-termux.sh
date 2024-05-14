@@ -14,7 +14,7 @@ chmod +x /data/data/com.termux/files/usr/bin/startxrdp
 
 # Set an alias to load termux environment faster
 echo 'alias stopxrdp="xrdp -k && vncserver -kill :1"' >> $HOME/.bashrc
-echo 'alias startxrdp="xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1"' >> $HOME/.bashrc
+echo 'alias startxrdp="xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 && ifconfig"' >> $HOME/.bashrc
 source ~/.bashrc
 
 # Setup the vnc server and password

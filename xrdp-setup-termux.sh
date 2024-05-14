@@ -14,7 +14,7 @@ echo "alias startxrdp='xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen t
 source ~/.bashrc
 
 # Setup the vnc server and password
-xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 
+xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 && stopxrdp
 
 # Let user know installation is complete
 clear && echo "XRDP is installed. To use, type startxrdp and connect to the WLAN0 local IP with your PC. You can close xrdp by typing stopxrdp."

@@ -106,7 +106,7 @@ You need to run this adb command to fix the process 9 error that will force clos
 adb shell device_config put activity_manager max_phantom_processes 2147483647
 ```
 If you want to run the code above in Termux, instead of using a PC, here is a video and written instructions:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q8xbCkHXAq8" frameborder="0" allowfullscreen></iframe>
+[![YouTube Video](https://img.youtube.com/vi/Q8xbCkHXAq8/0.jpg)](https://www.youtube.com/watch?v=Q8xbCkHXAq8)
 
 Install adb in Termux by running this code:
 ```

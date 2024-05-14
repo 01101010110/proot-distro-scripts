@@ -11,12 +11,11 @@ echo -e "#!/bin/bash\nxrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tc
 chmod +x /data/data/com.termux/files/usr/bin/startxrdp
 
 # Write aliases to the shell configuration file
-echo "alias stopxrdp='xrdp -k && vncserver -kill :1'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
-echo "alias startxrdp='/data/data/com.termux/files/usr/bin/startxrdp'" >> /data/data/com.termux/files/usr/etc/bash.bashrc
-echo 'if [ -f /data/data/com.termux/files/usr/etc/bash.bashrc ]; then source /data/data/com.termux/files/usr/etc/bash.bashrc; fi' >> ~/.profile
 
-# Load the aliases for the current session and save them for future use
-source /data/data/com.termux/files/usr/etc/bash.bashrc && echo "source /data/data/com.termux/files/usr/etc/bash.bashrc" >> ~/.profile
+# Set an alias to load termux environment faster
+echo 'alias stopxrdp="xrdp -k && vncserver -kill :1"' >> >> $HOME/.bashrc
+echo 'alias startxrdp="xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1"' >> >> $HOME/.bashrc
+source ~/.bashrc
 
 # Setup the vnc server and password
 xrdp && vncserver -xstartup /usr/bin/startxfce4 -listen tcp :1 && stopxrdp

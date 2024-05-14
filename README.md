@@ -90,7 +90,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 
 #
-## Optional VNC Support --- For Ubuntu and Debian Environments Only!
+## Optional VNC Support --- For Ubuntu and Debian Environments Only! (STILL BEING WORKED ON, IS NOT READY. THIS LINK IS JUST FOR ME FOR TESTING RIGHT NOW)
 
 Adds VNC support, which allows you to connect to your environment remotely using a computer.  
 
@@ -100,7 +100,7 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 
 #
-## Optional VNC Support --- For Termux Only Environments!
+## Optional VNC Support --- For Termux Only Environments! (STILL BEING WORKED ON, IS NOT READY. THIS LINK IS JUST FOR ME FOR TESTING RIGHT NOW)
 
 Adds VNC support, which allows you to connect to your environment remotely using a computer. 
 

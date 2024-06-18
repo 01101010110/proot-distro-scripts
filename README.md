@@ -70,6 +70,17 @@ curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main
 ```
 
 #
+## Fix For Samsung users missing audio
+
+Will fix missing audio problem for Samsung users, only need to run this code in Termux once, and it will fix the issue for all three environments at once (force close termux when done, then open the environment):
+
+**Copy and paste inside of Termux and not inside your environment:**
+```
+echo -e 'LD_PRELOAD=/system/lib64/libskcodec.so\npulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' | tee -a ../usr/etc/bash.bashrc
+```
+Then force close Termux and open your environment and the sound should be fixed. Thanks to zincro3 from the XDA Forums.
+
+#
 ## Optional xRDP Support --- For Ubuntu and Debian Environments Only!
 
 Adds xRDP support, which allows you to connect to your environment remotely using a computer. 

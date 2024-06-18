@@ -63,9 +63,6 @@ pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymou
 echo "
 source .sound" >> .bashrc
 
-# Testing Samsung Fix
-echo -e 'LD_PRELOAD=/system/lib64/libskcodec.so\npulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1' | tee -a ../usr/etc/bash.bashrc
-
 # Setup termux to allow x11 app
 yes | pkg install termux-x11-nightly
 echo "allow-external-apps = true" >> ~/.termux/termux.properties

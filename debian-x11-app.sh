@@ -28,7 +28,7 @@ yes | proot-distro install debian
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login debian --shared-tmp -- env DISPLAY=:1 apt upgrade
 
-# Set timezone to phone's tz
+# Set timezone to phone / tablet's tz
 timezone=$(getprop persist.sys.timezone); proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 rm /etc/localtime; proot-distro login debian --shared-tmp -- env DISPLAY=:1.0 cp /usr/share/zoneinfo/$timezone /etc/localtime
 
 #Install proot-distro packages (sudo, gui, terminal)

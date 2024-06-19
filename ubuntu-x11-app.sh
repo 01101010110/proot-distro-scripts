@@ -28,6 +28,9 @@ yes | proot-distro install ubuntu
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt update
 yes | proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt upgrade
 
+# Set timezone to phone / tablet's tz
+timezone=$(getprop persist.sys.timezone); proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1.0 rm /etc/localtime; proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1.0 cp /usr/share/zoneinfo/$timezone /etc/localtime
+
 #Install proot-distro packages (sudo, gui, terminal)
 proot-distro login ubuntu --shared-tmp -- env DISPLAY=:1 apt install sudo xfce4 xfce4-terminal dbus-x11 -y
 

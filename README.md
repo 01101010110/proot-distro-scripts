@@ -24,7 +24,7 @@ This repository contains scripts that are able to be executed using one line of 
 ### Installation
 
 * Select an environment below, Ubuntu, Debian, or Termux, and copy it's code.
-* Paste your code into Termux and press enter. Set a user name and password.
+* Paste your code into Termux and press enter. Set a user name and password. (The username MUST start with a letter)
 * You will then be asked to select a repository, just press enter twice. (Prevents a repo bug)
 * The script will install everything needed and prompt towards the end for language selection.
 * When the script completes, it will open the x11 app for us. The app will freeze the first run.

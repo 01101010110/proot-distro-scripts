@@ -1,0 +1,18 @@
+# steps to get full root in ubuntu environment
+
+# in termux - not the environment, but in Termux run:
+pkill -f termux.x11
+termux-x11 :1 &
+
+# this will log you in the environment
+proot-distro login ubuntu --shared-tmp --bind /tmp:/tmp
+
+# once inside the environment run this:
+export DISPLAY=:1
+export PULSE_SERVER=127.0.0.1
+export XDG_RUNTIME_DIR=/tmp/xdg
+mkdir -p "$XDG_RUNTIME_DIR" && chmod 700 "$XDG_RUNTIME_DIR"
+startxfce4
+
+# now running whoami or id will reveal root
+ 

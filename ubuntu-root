@@ -14,5 +14,12 @@ export XDG_RUNTIME_DIR=/tmp/xdg
 mkdir -p "$XDG_RUNTIME_DIR" && chmod 700 "$XDG_RUNTIME_DIR"
 startxfce4
 
-# now running whoami or id will reveal root
+# now running whoami or id will reveal you are the root user
+
+# set a root password 
+passwd
+
+# now we can remote into our machine after setting up xrdp, and use root for the username and your pwd you set
+
+
  

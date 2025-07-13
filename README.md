@@ -100,26 +100,6 @@ Adds xRDP support, which allows you to connect to your environment remotely usin
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup-termux.sh -o xrdp-setup-termux.sh && chmod +x xrdp-setup-termux.sh && source xrdp-setup-termux.sh
 ```
 
-#
-## Optional VNC Support --- For Ubuntu and Debian Environments Only! (STILL BEING WORKED ON, IS NOT READY. THIS LINK IS JUST FOR ME FOR TESTING RIGHT NOW)
-
-Adds VNC support, which allows you to connect to your environment remotely using a computer.  
-
-**Copy and paste inside of your environment:**
-```
-curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/vnc-setup.sh -o vnc-setup.sh && chmod +x vnc-setup.sh && source vnc-setup.sh
-```
-
-#
-## Optional VNC Support --- For Termux Only Environments! (STILL BEING WORKED ON, IS NOT READY. THIS LINK IS JUST FOR ME FOR TESTING RIGHT NOW)
-
-Adds VNC support, which allows you to connect to your environment remotely using a computer. 
-
-**Copy and paste inside of your environment:**
-```
-curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/vnc-setup-termux.sh -o vnc-setup-termux.sh && chmod +x vnc-setup-termux.sh && source vnc-setup-termux.sh
-```
-
 ## Process 9 error
 
 You need to run this adb command to fix the process 9 error that will force close Termux

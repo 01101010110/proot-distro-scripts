@@ -89,6 +89,7 @@ Adds xRDP support, which allows you to connect to your environment remotely usin
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup.sh -o xrdp-setup.sh && chmod +x xrdp-setup.sh && source xrdp-setup.sh
 ```
+Use the command xrdpstart to start the service, and grab your ip address for Windows Remote Desktop Connection
 
 #
 ## Optional xRDP Support --- For Termux Only Environments!
@@ -99,7 +100,9 @@ Adds xRDP support, which allows you to connect to your environment remotely usin
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup-termux.sh -o xrdp-setup-termux.sh && chmod +x xrdp-setup-termux.sh && source xrdp-setup-termux.sh
 ```
+Use the command xrdpstart to start the service, and grab your ip address for Windows Remote Desktop Connection
 
+#
 ## Process 9 error
 
 You need to run this adb command to fix the process 9 error that will force close Termux

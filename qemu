@@ -1,0 +1,3 @@
+# testing
+
+apt update && apt install -y git build-essential ninja-build meson pkg-config libglib2.0-dev libpixman-1-dev libslirp-dev libsdl2-dev libsdl2-image-dev libsdl2-net-dev libpulse-dev pulseaudio libvte-2.91-dev python3-venv python3-pip zlib1g-dev && cd ~ && git clone https://gitlab.com/qemu-project/qemu.git && cd qemu && ./configure --target-list=aarch64-softmmu --enable-sdl --enable-vnc --enable-slirp --enable-virtfs --disable-werror --disable-kvm && make -j$(nproc)

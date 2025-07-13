@@ -1,3 +1,104 @@
 # testing
 
+# "One Liners"
+# build qemu-aarch64 (no kvm)
 apt update && apt install -y git build-essential ninja-build meson pkg-config libglib2.0-dev libpixman-1-dev libslirp-dev libsdl2-dev libsdl2-image-dev libsdl2-net-dev libpulse-dev pulseaudio libvte-2.91-dev python3-venv python3-pip zlib1g-dev && cd ~ && git clone https://gitlab.com/qemu-project/qemu.git && cd qemu && ./configure --target-list=aarch64-softmmu --enable-sdl --enable-vnc --enable-slirp --enable-virtfs --disable-werror --disable-kvm && make -j$(nproc)
+
+
+# "Pretty Text"
+# build qemu
+
+apt update
+apt install -y git build-essential ninja-build meson \
+  pkg-config libglib2.0-dev libpixman-1-dev libslirp-dev \
+  libsdl2-dev libsdl2-image-dev libsdl2-net-dev \
+  libpulse-dev pulseaudio libvte-2.91-dev \
+  python3-venv python3-pip \
+  zlib1g-dev
+
+cd ~
+git clone https://gitlab.com/qemu-project/qemu.git
+cd qemu
+
+./configure \
+  --target-list=aarch64-softmmu \
+  --enable-sdl --enable-vnc --enable-slirp \
+  --enable-virtfs \
+  --disable-werror
+
+./configure \
+  --target-list=aarch64-softmmu \
+  --enable-sdl --enable-vnc --enable-slirp \
+  --enable-virtfs \
+  --disable-werror \
+  --disable-kvm
+
+make -j$(nproc)
+
+# make efi and vars files
+
+apt update
+apt install -y build-essential uuid-dev iasl git nasm python3 python3-pip python3-venv gcc-aarch64-linux-gnu
+python3 -m venv ~/edk2-venv
+source ~/edk2-venv/bin/activate
+pip3 install --upgrade pip
+mkdir -p ~/edk2-workspace
+cd ~/edk2-workspace
+git clone https://github.com/tianocore/edk2.git
+git clone https://github.com/tianocore/edk2-platforms.git
+git clone https://github.com/tianocore/edk2-non-osi.git
+git clone https://github.com/tianocore/edk2-libc.git
+python3 -m venv ~/edk2-venv
+source ~/edk2-venv/bin/activate
+cd ~/edk2-workspace
+git clone https://github.com/tianocore/edk2-pytool-extensions.git
+cd edk2-pytool-extensions
+pip install -e .
+cd ~/edk2-workspace/edk2
+git submodule update --init
+source edksetup.sh
+make -C BaseTools
+export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-
+which aarch64-linux-gnu-gcc
+build -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc -b RELEASE
+mkdir -p ~/qemu-firmware
+cp ~/edk2-workspace/edk2/Build/ArmVirtQemu-AARCH64/RELEASE_GCC5/FV/QEMU_EFI.fd ~/qemu-firmware/
+cp ~/edk2-workspace/edk2/Build/ArmVirtQemu-AARCH64/RELEASE_GCC5/FV/QEMU_VARS.fd ~/qemu-firmware/vars-template-pflash.fd
+
+# make hard drive 
+
+cd ~/qemu
+
+make -C build qemu-img
+./build/qemu-img create -f raw ubuntu_disk.img 8G
+
+# run (minimal settings)
+
+cd ~/qemu
+
+export XDG_RUNTIME_DIR=/tmp/xdg
+mkdir -p $XDG_RUNTIME_DIR
+chmod 700 $XDG_RUNTIME_DIR
+
+# Use fresh NVRAM and expand to 64MB
+cp $HOME/qemu-firmware/vars-template-pflash.fd QEMU_VARS.fd
+truncate -s 64M QEMU_VARS.fd
+truncate -s 64M $HOME/qemu-firmware/QEMU_EFI.fd
+
+./build/qemu-system-aarch64 \
+  -machine virt \
+  -cpu cortex-a72 \
+  -m 2048 \
+  -drive if=pflash,format=raw,readonly=on,file=$HOME/qemu-firmware/QEMU_EFI.fd \
+  -drive if=pflash,format=raw,file=QEMU_VARS.fd \
+  -drive if=virtio,file=ubuntu_disk.img,format=raw \
+  -cdrom /sdcard/Download/ubuntu-22.04.5-live-server-arm64.iso \
+  -boot order=d \
+  -device virtio-gpu-pci \
+  -display sdl \
+  -device usb-ehci,id=ehci \
+  -device usb-kbd \
+  -device usb-mouse \
+  -netdev user,id=net0 \
+  -device virtio-net-device,netdev=net0
+

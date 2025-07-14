@@ -21,4 +21,4 @@ echo 'alias startxrdp="stopxrdp; sleep 1; vncserver :1 -geometry 1280x720 -local
 source ~/.bashrc
 
 # Let user know installation is complete
-clear && echo "XRDP is installed. To use, type startxrdp && ifconfig and connect to the WLAN0 local IP with your PC. You can close xrdp by typing stopxrdp."
+clear && echo "XRDP is installed. To use, type startxrdp to start server. Type, ifconfig and connect to the WLAN0 local IP with your PC. You can close xrdp by typing stopxrdp."

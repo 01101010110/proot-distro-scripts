@@ -38,6 +38,7 @@ EOF
 pkill -9 xrdp
 pkill -9 sesman
 pkill -f Xtigervnc
+vncserver -kill :1 > /dev/null 2>&1
 
 rm -f ~/.vnc/*:1.pid
 rm -f /data/data/com.termux/files/usr/tmp/.X1-lock
@@ -46,7 +47,6 @@ rm -f /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid
 
 sleep 2
 
-vncserver -kill :1 > /dev/null 2>&1
 vncserver -geometry 1280x720 :1
 
 xrdp-sesman

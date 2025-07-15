@@ -110,3 +110,12 @@ EOF
 # Start XRDP services
 xrdp-sesman
 xrdp
+
+# Create an alias to start xrdp easier in the future
+echo 'alias startxrdp="pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver; rm -f ~/.vnc/*:1.pid /data/data/com.termux/files/usr/tmp/.X1-lock /data/data/com.termux/files/usr/tmp/.X11-unix/X1 /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid; vncserver -kill :1 >/dev/null 2>&1; vncserver :1 -geometry 1280x720 -localhost no; xrdp-sesman; xrdp"' >> ~/.bashrc
+
+# Create an alias to quickly stop xrdp and cleanup locks / processes
+echo 'alias stopxrdp="pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver; rm -f ~/.vnc/*:1.pid /data/data/com.termux/files/usr/tmp/.X1-lock /data/data/com.termux/files/usr/tmp/.X11-unix/X1 /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid"' >> ~/.bashrc
+
+source ~/.bashrc
+

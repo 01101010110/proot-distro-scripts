@@ -1,32 +1,20 @@
-#!/bin/bash
+pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp
 
-pkg install x11-repo -y
-pkg update -y
-pkg install xfce4 xfce4-goodies tigervnc xrdp -y
+adduser -D remote && echo "remote:111111" | chpasswd
 
+mkdir -p ~/.vnc
+echo "startxfce4 &" > ~/.vnc/xstartup
+chmod +x ~/.vnc/xstartup
 echo "startxfce4" > ~/.xsession
 chmod +x ~/.xsession
 
-pkill -9 xrdp
-pkill -9 sesman
-pkill -f Xtigervnc
-pkill -f Xvnc
-sleep 1
-
-vncserver -kill :1 > /dev/null 2>&1
-
-rm -rf ~/.vnc
-rm -f /data/data/com.termux/files/usr/tmp/.X*-lock
-rm -f /data/data/com.termux/files/usr/tmp/.X11-unix/X*
+pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver
+rm -f ~/.vnc/*:1.pid
+rm -f /data/data/com.termux/files/usr/tmp/.X1-lock
+rm -f /data/data/com.termux/files/usr/tmp/.X11-unix/X1
 rm -f /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid
 
-sleep 2
-
-mkdir -p ~/.vnc
-echo "#!/data/data/com.termux/files/usr/bin/sh" > ~/.vnc/xstartup
-echo "xrdb $HOME/.Xresources" >> ~/.vnc/xstartup
-echo "startxfce4 &" >> ~/.vnc/xstartup
-chmod +x ~/.vnc/xstartup
+vncserver -geometry 1280x720 :1
 
 cat > ../usr/etc/xrdp/xrdp.ini << 'EOF'
 [Globals]
@@ -83,8 +71,6 @@ LogLevel=INFO
 EnableSyslog=false
 
 [LoggingPerLogger]
-#xrdp.c=INFO
-#main()=INFO
 
 [Channels]
 rdpdr=true
@@ -102,8 +88,6 @@ password=ask
 ip=127.0.0.1
 port=5901
 EOF
-
-vncserver -geometry 1280x720 :1
 
 xrdp-sesman
 xrdp

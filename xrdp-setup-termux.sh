@@ -1,6 +1,8 @@
 pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp
 
-adduser -D remote && echo "remote:111111" | chpasswd
+pkg install busybox -y
+busybox useradd -m remote
+echo "remote:111111" | chpasswd
 
 mkdir -p ~/.vnc
 echo "startxfce4 &" > ~/.vnc/xstartup

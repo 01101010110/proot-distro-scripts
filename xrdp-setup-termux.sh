@@ -1,9 +1,17 @@
-pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp
+pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp dbus
 
 mkdir -p ~/.vnc
-echo "startxfce4 &" > ~/.vnc/xstartup
+cat > ~/.vnc/xstartup <<EOF
+#!/data/data/com.termux/files/usr/bin/sh
+export DISPLAY=":1"
+export XDG_RUNTIME_DIR="/data/data/com.termux/files/usr/tmp"
+xrdb "$HOME/.Xresources"
+export XKL_XMODMAP_DISABLE=1
+dbus-launch --exit-with-session startxfce4 &
+EOF
 chmod +x ~/.vnc/xstartup
-echo "startxfce4" > ~/.xsession
+
+echo "dbus-launch --exit-with-session startxfce4" > ~/.xsession
 chmod +x ~/.xsession
 
 pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver

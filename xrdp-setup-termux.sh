@@ -1,24 +1,20 @@
-#!/data/data/com.termux/files/usr/bin/sh
 pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp
-vncpasswd
+
 mkdir -p ~/.vnc
-cat > ~/.vnc/xstartup << 'EOF'
-#!/data/data/com.termux/files/usr/bin/sh
-unset SESSION_MANAGER
-unset DBUS_SESSION_BUS_ADDRESS
-export XDG_RUNTIME_DIR="$HOME/.cache"
-exec startxfce4
-EOF
+echo "startxfce4 &" > ~/.vnc/xstartup
 chmod +x ~/.vnc/xstartup
-cat > ~/.xsession << 'EOF'
-#!/data/data/com.termux/files/usr/bin/sh
-exec startxfce4
-EOF
+echo "startxfce4" > ~/.xsession
 chmod +x ~/.xsession
-pkill -9 xrdp sesman Xtightvnc Xvnc Xorg vncserver 2>/dev/null
-rm -f ~/.vnc/*:1.pid /data/data/com.termux/files/usr/tmp/.X1-lock /data/data/com.termux/files/usr/tmp/.X11-unix/X1 /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid
+
+pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver
+rm -f ~/.vnc/*:1.pid
+rm -f /data/data/com.termux/files/usr/tmp/.X1-lock
+rm -f /data/data/com.termux/files/usr/tmp/.X11-unix/X1
+rm -f /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid
+
 vncserver -geometry 1280x720 :1
-cat > /data/data/com.termux/files/usr/etc/xrdp/xrdp.ini << 'EOF'
+
+cat > ../usr/etc/xrdp/xrdp.ini << 'EOF'
 [Globals]
 ini_version=1
 fork=true
@@ -39,11 +35,40 @@ bulk_compression=true
 max_bpp=32
 new_cursors=true
 use_fastpath=both
+grey=e1e1e1
+dark_grey=b4b4b4
+blue=0078d7
+dark_blue=0078d7
+ls_top_window_bg_color=003057
+ls_width=350
+ls_height=360
+ls_bg_color=f0f0f0
+ls_logo_filename=
+ls_logo_transform=scale
+ls_logo_width=250
+ls_logo_height=110
+ls_logo_x_pos=55
+ls_logo_y_pos=35
+ls_label_x_pos=30
+ls_label_width=68
+ls_input_x_pos=110
+ls_input_width=210
+ls_input_y_pos=158
+ls_btn_ok_x_pos=142
+ls_btn_ok_y_pos=308
+ls_btn_ok_width=85
+ls_btn_ok_height=30
+ls_btn_cancel_x_pos=237
+ls_btn_cancel_y_pos=308
+ls_btn_cancel_width=85
+ls_btn_cancel_height=30
 
 [Logging]
 LogFile=xrdp.log
 LogLevel=INFO
 EnableSyslog=false
+
+[LoggingPerLogger]
 
 [Channels]
 rdpdr=true
@@ -54,12 +79,13 @@ rail=true
 xrdpvr=true
 
 [Xvnc]
-name=VNC-Passthrough
+name=Xvnc
 lib=libvnc.so
-username=
-password=
+username=ask
+password=ask
 ip=127.0.0.1
 port=5901
 EOF
+
 xrdp-sesman
 xrdp

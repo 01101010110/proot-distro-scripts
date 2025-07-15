@@ -1,20 +1,20 @@
-pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin xrdp dbus
+pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp dbus
 
 mkdir -p ~/.vnc
 
 cat > ~/.vnc/xstartup <<EOF
 #!/data/data/com.termux/files/usr/bin/sh
-exit 0
+export DISPLAY=":1"
+export XDG_RUNTIME_DIR="/data/data/com.termux/files/usr/tmp"
+eval "\$(dbus-launch --exit-with-session --print-address)"
+export DBUS_SESSION_BUS_ADDRESS
+exec startxfce4
 EOF
 chmod +x ~/.vnc/xstartup
 
 cat > ~/.xsession <<EOF
 #!/data/data/com.termux/files/usr/bin/sh
-export DISPLAY=:0
-export XDG_RUNTIME_DIR="/data/data/com.termux/files/usr/tmp"
-eval "\$(dbus-launch --exit-with-session --print-address)"
-export DBUS_SESSION_BUS_ADDRESS
-exec startxfce4
+exit 0
 EOF
 chmod +x ~/.xsession
 
@@ -23,6 +23,9 @@ rm -f ~/.vnc/*:1.pid
 rm -f /data/data/com.termux/files/usr/tmp/.X1-lock
 rm -f /data/data/com.termux/files/usr/tmp/.X11-unix/X1
 rm -f /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid
+
+vncserver -kill :1 >/dev/null 2>&1
+vncserver :1 -geometry 1280x720 -localhost no
 
 cat > ../usr/etc/xrdp/xrdp.ini << 'EOF'
 [Globals]
@@ -88,14 +91,13 @@ cliprdr=true
 rail=true
 xrdpvr=true
 
-[Xorg]
-name=Xorg
-lib=libxorgxrdp.so
+[Xvnc]
+name=Xvnc
+lib=libvnc.so
 username=ask
 password=ask
 ip=127.0.0.1
-port=-1
-code=20
+port=5901
 EOF
 
 xrdp-sesman

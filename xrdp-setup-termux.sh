@@ -24,6 +24,7 @@ sleep 2
 
 mkdir -p ~/.vnc
 echo "#!/data/data/com.termux/files/usr/bin/sh" > ~/.vnc/xstartup
+echo "xrdb $HOME/.Xresources" >> ~/.vnc/xstartup
 echo "startxfce4 &" >> ~/.vnc/xstartup
 chmod +x ~/.vnc/xstartup
 
@@ -96,14 +97,10 @@ xrdpvr=true
 [Xvnc]
 name=Xvnc
 lib=libvnc.so
-username=remote
-password=111111
+username=ask
+password=ask
 ip=127.0.0.1
 port=5901
-#code=0
-#xserverbpp=24
-#delay_ms=2000
-#disabled_encodings_mask=0
 EOF
 
 vncserver -geometry 1280x720 :1

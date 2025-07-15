@@ -4,17 +4,16 @@ mkdir -p ~/.vnc
 
 cat > ~/.vnc/xstartup <<EOF
 #!/data/data/com.termux/files/usr/bin/sh
-export DISPLAY=":1"
-export XDG_RUNTIME_DIR="/data/data/com.termux/files/usr/tmp"
-xrdb "\$HOME/.Xresources"
-export XKL_XMODMAP_DISABLE=1
+exit 0
+EOF
+chmod +x ~/.vnc/xstartup
+
+cat > ~/.xsession <<EOF
+#!/data/data/com.termux/files/usr/bin/sh
 eval "\$(dbus-launch --exit-with-session --print-address)"
 export DBUS_SESSION_BUS_ADDRESS
 exec startxfce4
 EOF
-chmod +x ~/.vnc/xstartup
-
-echo "eval \\\$(dbus-launch --exit-with-session --print-address); export DBUS_SESSION_BUS_ADDRESS; exec startxfce4" > ~/.xsession
 chmod +x ~/.xsession
 
 pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver

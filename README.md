@@ -97,10 +97,13 @@ Use the command xrdpstart to start the service, and grab your ip address for Win
 Adds xRDP support, which allows you to connect to your environment remotely using a computer. 
 
 **Copy and paste inside of Termux:**
+
+Make sure you run this command in the Termux App, and Not in the Termux Environment. The Termux xrdp can't operate correctly if we are connected to the x11 app using our environments, so we need to just use the Termux app's shell.
+
 ```
 curl -sL https://raw.githubusercontent.com/01101010110/proot-distro-scripts/main/xrdp-setup-termux.sh -o xrdp-setup-termux.sh && chmod +x xrdp-setup-termux.sh && source xrdp-setup-termux.sh
 ```
-Use the command xrdpstart to start the service, and grab your ip address for Windows Remote Desktop Connection
+Use the command startxrdp to restart the service in the future, stopxrdp to stop it. 
 
 #
 ## Process 9 error

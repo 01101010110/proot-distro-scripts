@@ -1,7 +1,8 @@
+# Update packages and install required components
 pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp dbus
 
+# Create VNC startup script to launch XFCE
 mkdir -p ~/.vnc
-
 cat > ~/.vnc/xstartup <<EOF
 #!/data/data/com.termux/files/usr/bin/sh
 export DISPLAY=":1"
@@ -14,21 +15,25 @@ exec startxfce4
 EOF
 chmod +x ~/.vnc/xstartup
 
+# Neutralize .xsession to prevent XFCE from being launched twice
 cat > ~/.xsession <<EOF
 #!/data/data/com.termux/files/usr/bin/sh
 exit 0
 EOF
 chmod +x ~/.xsession
 
+# Clean up any stale XRDP or VNC processes and socket files
 pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver
 rm -f ~/.vnc/*:1.pid
 rm -f /data/data/com.termux/files/usr/tmp/.X1-lock
 rm -f /data/data/com.termux/files/usr/tmp/.X11-unix/X1
 rm -f /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid
 
+# Restart VNC server on display :1 with desired screen size
 vncserver -kill :1 >/dev/null 2>&1
 vncserver :1 -geometry 1280x720 -localhost no
 
+# Write XRDP configuration file
 cat > ../usr/etc/xrdp/xrdp.ini << 'EOF'
 [Globals]
 ini_version=1
@@ -102,5 +107,6 @@ ip=127.0.0.1
 port=5901
 EOF
 
+# Start XRDP services
 xrdp-sesman
 xrdp

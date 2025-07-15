@@ -1,17 +1,25 @@
-pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp dbus
+pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp dbus dbus-x11
 
 mkdir -p ~/.vnc
+
 cat > ~/.vnc/xstartup <<EOF
 #!/data/data/com.termux/files/usr/bin/sh
 export DISPLAY=":1"
 export XDG_RUNTIME_DIR="/data/data/com.termux/files/usr/tmp"
-xrdb "$HOME/.Xresources"
+xrdb "\$HOME/.Xresources"
 export XKL_XMODMAP_DISABLE=1
-dbus-launch --exit-with-session startxfce4 &
+eval "\$(dbus-launch --exit-with-session --print-address)"
+export DBUS_SESSION_BUS_ADDRESS
+exec startxfce4
 EOF
 chmod +x ~/.vnc/xstartup
 
-echo "dbus-launch --exit-with-session startxfce4" > ~/.xsession
+cat > ~/.xsession <<EOF
+#!/data/data/com.termux/files/usr/bin/sh
+eval "\$(dbus-launch --exit-with-session --print-address)"
+export DBUS_SESSION_BUS_ADDRESS
+exec startxfce4
+EOF
 chmod +x ~/.xsession
 
 pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver
@@ -20,6 +28,7 @@ rm -f /data/data/com.termux/files/usr/tmp/.X1-lock
 rm -f /data/data/com.termux/files/usr/tmp/.X11-unix/X1
 rm -f /data/data/com.termux/files/usr/var/run/xrdp-sesman.pid
 
+vncserver -kill :1 >/dev/null 2>&1
 vncserver -geometry 1280x720 :1
 
 cat > ../usr/etc/xrdp/xrdp.ini << 'EOF'
@@ -73,7 +82,7 @@ ls_btn_cancel_height=30
 
 [Logging]
 LogFile=xrdp.log
-LogLevel=INFO
+LogLevel=DEBUG
 EnableSyslog=false
 
 [LoggingPerLogger]

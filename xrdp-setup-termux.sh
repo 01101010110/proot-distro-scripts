@@ -1,4 +1,4 @@
-pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp dbus dbus-x11
+pkg update -y && pkg install x11-repo -y && pkg install -y xfce4 xfce4-goodies xfce4-terminal xfce4-whiskermenu-plugin tigervnc xrdp dbus
 
 mkdir -p ~/.vnc
 
@@ -14,12 +14,7 @@ exec startxfce4
 EOF
 chmod +x ~/.vnc/xstartup
 
-cat > ~/.xsession <<EOF
-#!/data/data/com.termux/files/usr/bin/sh
-eval "\$(dbus-launch --exit-with-session --print-address)"
-export DBUS_SESSION_BUS_ADDRESS
-exec startxfce4
-EOF
+echo "eval \\\$(dbus-launch --exit-with-session --print-address); export DBUS_SESSION_BUS_ADDRESS; exec startxfce4" > ~/.xsession
 chmod +x ~/.xsession
 
 pkill -9 xrdp; pkill -9 sesman; pkill -9 Xtightvnc; pkill -9 Xvnc; pkill -9 Xorg; pkill -9 vncserver
